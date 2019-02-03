@@ -4,7 +4,6 @@ import Home from '@/components/shenyintao/Home'
 import Opera from '@/components/shenyintao/Opera'
 import Sports from '@/components/shenyintao/Sports'
 import Classicaldance from '@/components/shenyintao/Classicaldance'
-
 Vue.use(Router)
 
 export default new Router({
