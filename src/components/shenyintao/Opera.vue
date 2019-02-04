@@ -161,6 +161,7 @@
         </li>
       </ul>
     </div>
+    <!-- 热门排行 -->
     <div class="rmphBox middle">
       <div class="contTitle">
         <img src="../../assets/img/rmph.jpg">
@@ -247,11 +248,60 @@
         </ul>
       </div>
     </div>
+    <!-- 日历 -->
+    <div class="dateBox">
+      <fullcalendar></fullcalendar>
+    </div>
+    <!-- 合作方 -->
+    <div class="hzfBox middle">
+      <div class="contTitle">
+        <img src="../../assets/img/hezuof.jpg">
+      </div>
+      <ul class="hzfList clear">
+        <li>
+          <img src="../../assets/img/hzuo1.gif" alt="">
+        </li>
+        <li>
+          <img src="../../assets/img/hzuo2.gif" alt="">
+        </li>
+        <li>
+          <img src="../../assets/img/hzuo3.gif" alt="">
+        </li>
+        <li>
+          <img src="../../assets/img/hzuo4.gif" alt="">
+        </li>
+        <li>
+          <img src="../../assets/img/hzuo5.gif" alt="">
+        </li>
+        <li>
+          <img src="../../assets/img/hzuo6.gif" alt="">
+        </li>
+        <li>
+          <img src="../../assets/img/hzuo7.gif" alt="">
+        </li>
+        <li>
+          <img src="../../assets/img/hzuo8.gif" alt="">
+        </li>
+        <li>
+          <img src="../../assets/img/hzuo9.gif" alt="">
+        </li>
+        <li>
+          <img src="../../assets/img/hzuo10.gif" alt="">
+        </li>
+        <li>
+          <img src="../../assets/img/hzuo11.gif" alt="">
+        </li>
+        <li>
+          <img src="../../assets/img/hzuo12.gif" alt="">
+        </li>
+      </ul>
+    </div>
     <router-view/>
   </div>
 </template>
 
 <script>
+import fullcalendar from 'vue-fullcalendar'
 import Search from '@/components/shenyintao/Search'
 import Choses from '@/components/shenyintao/Choses'
 import Swiper from '@/components/shenyintao/Swiper'
@@ -260,6 +310,7 @@ export default {
   components: {
     Search,
     Choses,
+    fullcalendar,
     Swiper
   }
 }
@@ -354,6 +405,7 @@ export default {
       }
     }
     .hdxdBox{
+      margin-top: 20px;
       .hdxdList{
         li{
           float: left;
@@ -367,7 +419,7 @@ export default {
     .zqbf{
       position: relative;
       top: 20px;
-      height: 280px;
+      height: 300px;
       .zqbfNavList{
         z-index: 10;
         li{
@@ -476,6 +528,68 @@ export default {
               }
             }
           }
+        }
+      }
+    }
+    .dateBox{
+      /deep/ .comp-full-calendar{
+        max-width: 1200px;
+        padding: 0;
+        border-radius: 50px 50px 0 0;
+        overflow: hidden;
+        margin-top: 20px;
+        /deep/ .full-calendar-header{
+          height: 120px;
+          line-height: 120px;
+          background: red;
+          /deep/ .header-center{
+            flex: none;
+            /deep/ span{
+              font-size: 20px;
+              color: #fff;
+            }
+          }
+        }
+        /deep/ .full-calendar-body{
+          margin-top: 0;
+          .weeks{
+            border: none;
+            border-bottom: 1px solid #eee;
+            .week{
+              height: 46px;
+              line-height: 48px;
+              background: #eaeaea;
+              border: none;
+              color: red;
+            }
+          }
+          .dates{
+            .week-row{
+              .day-cell{
+                &:nth-of-type(1){
+                  border-left: none;
+                }
+                .day-number{
+                  text-align: left;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .hzfBox{
+      margin-top: 20px;
+      background: #fff;
+      .contTitle{
+        width: 614px;
+        margin: 0 auto;
+      }
+      .hzfList{
+        width: 938px;
+        margin: 0 auto;
+        li{
+          float: left;
         }
       }
     }
