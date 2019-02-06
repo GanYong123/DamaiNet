@@ -1,7 +1,7 @@
 <template>
   <footer id="head">
     公共底部组件
-  </footer>    
+  </footer>
 </template>
 
 <script>

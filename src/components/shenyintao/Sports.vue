@@ -1,15 +1,15 @@
 <template>
-  <div id="details">
-    详情页
+  <div id="sports">
+    体育
   </div>
 </template>
 
 <script>
 export default {
-  name: 'details'
+  name: 'Sports'
 }
 </script>
 
-<style lang="less" scoped>
+<style scoped>
 
 </style>

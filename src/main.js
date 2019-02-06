@@ -13,7 +13,7 @@ import VueLazyload from 'vue-lazyload' // 引入Vue的懒加载
 Vue.use(ElementUI)
 Vue.use(VueLazyload)
 Vue.prototype.$http = axios // 挂载到Vue原型上
-Vue.prototype.$url = 'https://easy-mock.com/mock/5c42c815fa4bae6ac3633357/DamaiNet/'
+Vue.prototype.$url = 'https://www.easy-mock.com/mock/5c427251d13fff0d542dc795/Damai/'
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

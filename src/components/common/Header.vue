@@ -1,7 +1,7 @@
 <template>
   <header id="head">
     公共头部组件
-  </header>    
+  </header>
 </template>
 
 <script>
