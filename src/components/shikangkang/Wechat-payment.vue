@@ -1,12 +1,10 @@
 <template>
-  <div id="login">
-    登录
-  </div>
+    <div id="wechat"></div>
 </template>
 
 <script>
 export default {
-  name: 'Login'
+  name: 'Wechat-payment'
 }
 </script>
 
