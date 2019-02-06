@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <footer id="foot">
     <div class="link-warp">
       <dl>
@@ -71,10 +70,6 @@
         <li><img src="../../assets/img/footericon6.png" alt="icon"></li>
       </ul>
     </div>
-=======
-  <footer id="head">
-    公共底部组件
->>>>>>> 446f398aecec549b325cea44d7d4b554e6595f8d
   </footer>
 </template>
 
