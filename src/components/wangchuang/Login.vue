@@ -3,14 +3,13 @@
     <!--头部-->
     <div class="head">
       <div class="main">
-        <img src="../../assets/img/homelogo.png" alt="">
+        <!--<img src="../../assets/img/homelogo.png" alt="">-->
         <p>欢迎登录</p>
       </div>
     </div>
     <!--内容-->
     <div class="auto">
       <div class="box">
-        <!--<img :src="sgkl"/>-->
         <div class="nav">
         </div>
       </div>
