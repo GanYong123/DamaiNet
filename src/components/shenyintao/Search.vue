@@ -7,11 +7,12 @@
       <div class="areaBox" @mouseover="mouseover" @mouseleave="mouseleave">
         <span class="area">全国</span>
         <span class="more"></span>
-        <div class="moreArea" v-show="show">
+        <div class="moreArea clear" v-show="show">
           <span class="jiant"></span>
-          <div class="choseCity">
+          <div class="choseCity clear">
             <p>
-              当前城市:<span></span>
+              当前城市:
+              <span>全国</span>
             </p>
             <p>
               热门城市:
@@ -26,8 +27,8 @@
               <span>香港</span>
             </p>
           </div>
-          <div class="moreCityBox">
-            <p>其他城市:</p>
+          <div class="moreCityBox clear">
+            <p class="otherCity">其他城市:</p>
             <div class="moreCity">
               <span>上海</span>
               <span>北京</span>
@@ -179,12 +180,15 @@ export default {
         float: left;
         margin-right: 118px;
         position: relative;
-        cursor: pointer;
         .area{
           display: inline-block;
           width: 40px;
           height: 30px;
           font-size: 16px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          cursor: pointer;
         }
         .more{
           display: inline-block;
@@ -193,7 +197,8 @@ export default {
           -margin-left: 4px;
           border-bottom: 1px solid #000;
           border-right: 1px solid #000;
-          transform: translateY(-30%) rotateZ(45deg);
+          transform: translateY(-170%) rotateZ(45deg);
+          cursor: pointer;
         }
         .moreArea{
           position: absolute;
@@ -212,6 +217,39 @@ export default {
             border-left: 1px solid #ccc;
             transform: rotateZ(45deg) translate(210%,-370%);
             background: #fff;
+          }
+          .choseCity{
+            p:nth-of-type(1){
+             span{
+               display: inline-block;
+               padding: 4px 10px;
+               border: 1px solid palevioletred;
+               border-radius: 6px;
+               color: palevioletred;
+               cursor: pointer;
+             }
+           }
+            p:nth-of-type(2){
+              span{
+                display: inline-block;
+                padding: 4px 10px;
+                cursor: pointer;
+              }
+            }
+          }
+          .moreCityBox{
+            .otherCity{
+              float: left;
+            }
+            .moreCity{
+              float: left;
+              width: 600px;
+              span{
+                display: inline-block;
+                padding: 4px 10px;
+                cursor: pointer;
+              }
+            }
           }
         }
       }
