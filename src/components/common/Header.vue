@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <header id="Headers">
     <div class="head-warp">
       <div class="Login-hint">
@@ -23,6 +24,10 @@
         </li>
       </ul>
     </div>
+=======
+  <header id="head">
+    公共头部组件
+>>>>>>> 446f398aecec549b325cea44d7d4b554e6595f8d
   </header>
 </template>
 
