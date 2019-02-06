@@ -4,6 +4,7 @@ import Home from '@/components/shenyintao/Home'
 import Opera from '@/components/shenyintao/Opera'
 import Sports from '@/components/shenyintao/Sports'
 import Classicaldance from '@/components/shenyintao/Classicaldance'
+import Login from '@/components/wangchuang/Login'
 Vue.use(Router)
 
 export default new Router({
@@ -28,6 +29,11 @@ export default new Router({
       path: '/classicalDance',
       name: 'Classicaldance',
       component: Classicaldance
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
     }
   ]
 })

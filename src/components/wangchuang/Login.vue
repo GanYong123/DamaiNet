@@ -3,7 +3,7 @@
     <!--头部-->
     <div class="head">
       <div class="main">
-        <img :src="logo" alt="">
+        <img src="../../assets/img/homelogo.png" alt="">
         <p>欢迎登录</p>
       </div>
     </div>
@@ -20,14 +20,7 @@
 
 <script>
 export default {
-  name: 'Login',
-  // data(){
-  // }
-  // data(){
-  //   // return{
-  //   //   homelogo:require("../assets/img/homelogo.png")
-  //   // }
-  // }
+  name: 'Login'
 }
 </script>
 
