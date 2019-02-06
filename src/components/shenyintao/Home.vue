@@ -1,18 +1,8 @@
 <template>
   <div id="home">
-<<<<<<< HEAD
     <Headers></Headers>
-    <!-- <Search></Search> -->
-=======
-<<<<<<< HEAD
     <!-- 头部 -->
-    <Header></Header>
-=======
-    <Headers></Headers>
     <!-- <Search></Search> -->
-    <Footer></Footer>
->>>>>>> b557b8e274bbca1dc9ca8fa21cc3496e238285df
->>>>>>> db0f00d14c272cef9fc4898ecad3a1487e741f79
     <!-- 头部搜索 -->
     <Search></Search>
     <!-- 头部导航 -->
@@ -923,29 +913,13 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
-=======
-    <!-- 底部 -->
->>>>>>> db0f00d14c272cef9fc4898ecad3a1487e741f79
     <Footer></Footer>
   </div>
 </template>
 
 <script>
-<<<<<<< HEAD
-// import Search from '@/components/shenyintao/Search'
 import Headers from '../common/Header'
 import Footer from '../common/Footer'
-=======
-<<<<<<< HEAD
-import Header from '@/components/common/Header'
-import Footer from '@/components/common/Footer'
-=======
-// import Search from '@/components/shenyintao/Search'
-import Headers from '../common/Header'
-import Footer from '../common/Footer'
->>>>>>> b557b8e274bbca1dc9ca8fa21cc3496e238285df
->>>>>>> db0f00d14c272cef9fc4898ecad3a1487e741f79
 import Search from '@/components/shenyintao/Search'
 import Swiper from '@/components/shenyintao/Swiper'
 export default {
@@ -1000,23 +974,11 @@ export default {
     this.getList()
   },
   components: {
-<<<<<<< HEAD
     // Search,
     Headers, // 公共头部页面，个别页面不需要使用，所以这里当做组件引入。
     Footer, // 公共底部页面，个别页面不需要使用，所以这里当做组件引入。
     Search,
     Swiper
-=======
-<<<<<<< HEAD
-    Header,
-=======
-    Headers, // 公共头部页面，个别页面不需要使用，所以这里当做组件引入。
-    Footer, // 公共底部页面，个别页面不需要使用，所以这里当做组件引入。
->>>>>>> b557b8e274bbca1dc9ca8fa21cc3496e238285df
-    Search,
-    Swiper,
-    Footer
->>>>>>> db0f00d14c272cef9fc4898ecad3a1487e741f79
   }
 }
 </script>
