@@ -1,7 +1,18 @@
 <template>
   <div id="home">
+<<<<<<< HEAD
     <Headers></Headers>
     <!-- <Search></Search> -->
+=======
+<<<<<<< HEAD
+    <!-- 头部 -->
+    <Header></Header>
+=======
+    <Headers></Headers>
+    <!-- <Search></Search> -->
+    <Footer></Footer>
+>>>>>>> b557b8e274bbca1dc9ca8fa21cc3496e238285df
+>>>>>>> db0f00d14c272cef9fc4898ecad3a1487e741f79
     <!-- 头部搜索 -->
     <Search></Search>
     <!-- 头部导航 -->
@@ -11,9 +22,9 @@
         <ul class="navTopList clear">
           <router-link to="/opera" tag="li" >戏剧</router-link>
           <router-link to="/sports" tag="li" >体育</router-link>
-          <router-link to="to" tag="li" >亲子</router-link>
+          <router-link to="/parenting" tag="li" >亲子</router-link>
           <router-link to="/classicalDance" tag="li" >舞蹈古典</router-link>
-          <router-link to="to" tag="li" >摇滚</router-link>
+          <router-link to="/rock" tag="li" >摇滚</router-link>
         </ul>
         <ul class="navLeftList clear">
           <li v-for="(item, i) in userData" :class="{ 'active' : i === index+1 }" :key="i" @mouseenter="open(i)">
@@ -359,8 +370,8 @@
         <div class="middle">
           <div class="smLtBox">
             <h3 class="h3">
-              <span>1F</span>
-              戏剧达人
+              <span>2F</span>
+              体育赛事
             </h3>
             <div class="picBoxs">
               <img src="../../assets/img/sing6.jpg">
@@ -498,8 +509,8 @@
         <div class="middle">
           <div class="smLtBox">
             <h3 class="h3">
-              <span>1F</span>
-              戏剧达人
+              <span>3F</span>
+              舞蹈古典
             </h3>
             <div class="picBoxs">
               <img src="../../assets/img/sing6.jpg">
@@ -637,8 +648,8 @@
         <div class="middle">
           <div class="smLtBox">
             <h3 class="h3">
-              <span>1F</span>
-              戏剧达人
+              <span>4F</span>
+              儿童亲子
             </h3>
             <div class="picBoxs">
               <img src="../../assets/img/sing6.jpg">
@@ -776,8 +787,8 @@
         <div class="middle">
           <div class="smLtBox">
             <h3 class="h3">
-              <span>1F</span>
-              戏剧达人
+              <span>5F</span>
+              摇滚在路上
             </h3>
             <div class="picBoxs">
               <img src="../../assets/img/sing6.jpg">
@@ -912,14 +923,29 @@
         </div>
       </div>
     </div>
+<<<<<<< HEAD
+=======
+    <!-- 底部 -->
+>>>>>>> db0f00d14c272cef9fc4898ecad3a1487e741f79
     <Footer></Footer>
   </div>
 </template>
 
 <script>
+<<<<<<< HEAD
 // import Search from '@/components/shenyintao/Search'
 import Headers from '../common/Header'
 import Footer from '../common/Footer'
+=======
+<<<<<<< HEAD
+import Header from '@/components/common/Header'
+import Footer from '@/components/common/Footer'
+=======
+// import Search from '@/components/shenyintao/Search'
+import Headers from '../common/Header'
+import Footer from '../common/Footer'
+>>>>>>> b557b8e274bbca1dc9ca8fa21cc3496e238285df
+>>>>>>> db0f00d14c272cef9fc4898ecad3a1487e741f79
 import Search from '@/components/shenyintao/Search'
 import Swiper from '@/components/shenyintao/Swiper'
 export default {
@@ -974,11 +1000,23 @@ export default {
     this.getList()
   },
   components: {
+<<<<<<< HEAD
     // Search,
     Headers, // 公共头部页面，个别页面不需要使用，所以这里当做组件引入。
     Footer, // 公共底部页面，个别页面不需要使用，所以这里当做组件引入。
     Search,
     Swiper
+=======
+<<<<<<< HEAD
+    Header,
+=======
+    Headers, // 公共头部页面，个别页面不需要使用，所以这里当做组件引入。
+    Footer, // 公共底部页面，个别页面不需要使用，所以这里当做组件引入。
+>>>>>>> b557b8e274bbca1dc9ca8fa21cc3496e238285df
+    Search,
+    Swiper,
+    Footer
+>>>>>>> db0f00d14c272cef9fc4898ecad3a1487e741f79
   }
 }
 </script>
@@ -1443,6 +1481,7 @@ export default {
                 float: left;
                 margin-left: 18px;
                 margin-bottom: 64px;
+                cursor: pointer;
                 .cont2PicBox{
                   float: left;
                   width: 112px;
@@ -1461,6 +1500,13 @@ export default {
                     overflow: hidden;
                     text-overflow:ellipsis;
                     white-space: nowrap;
+                  }
+                  p{
+                    height: 26px;
+                    line-height: 26px;
+                    &:nth-of-type(1){
+                      margin-top: 42px;
+                    }
                   }
                 }
               }

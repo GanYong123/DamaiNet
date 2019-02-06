@@ -1,5 +1,5 @@
 <template>
-  <div id="classicalDance">
+  <div id="parenting">
     <!-- 头部 -->
     <Header></Header>
     <!-- 头部搜索 -->
@@ -311,7 +311,7 @@ import Search from '@/components/shenyintao/Search'
 import Choses from '@/components/shenyintao/Choses'
 import Swiper from '@/components/shenyintao/Swiper'
 export default {
-  name: 'Classicaldance',
+  name: 'Parenting',
   components: {
     Header,
     Search,
@@ -325,10 +325,10 @@ export default {
 
 <style scoped lang="less">
   @import "~@/assets/less/middle";
-  #classicalDance{
+  #parenting{
     /deep/ #choses{
       /deep/ .chosesList{
-        /deep/ li:nth-of-type(3){
+        /deep/ li:nth-of-type(4){
           background: red;
           color: #fff;
         }

@@ -1,5 +1,7 @@
 <template>
   <div id="opera">
+    <!-- 头部 -->
+    <Header></Header>
     <!-- 头部搜索 -->
     <Search></Search>
     <!-- 头部导航 -->
@@ -296,11 +298,14 @@
         </li>
       </ul>
     </div>
-    <router-view/>
+    <!-- 底部 -->
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
+import Header from '@/components/common/Header'
+import Footer from '@/components/common/Footer'
 import fullcalendar from 'vue-fullcalendar'
 import Search from '@/components/shenyintao/Search'
 import Choses from '@/components/shenyintao/Choses'
@@ -308,10 +313,12 @@ import Swiper from '@/components/shenyintao/Swiper'
 export default {
   name: 'Opera',
   components: {
+    Header,
     Search,
     Choses,
     fullcalendar,
-    Swiper
+    Swiper,
+    Footer
   }
 }
 </script>
@@ -319,279 +326,277 @@ export default {
 <style scoped lang="less">
   @import "~@/assets/less/middle";
   #opera{
-    /deep/ #choses{
-      /deep/ .chosesList{
-        /deep/ li:last-of-type{
-          background: red;
-          color: #fff;
-        }
-      }
-    }
-    /deep/ .el-carousel{
-      /deep/ .el-carousel__container{
-        height: 261px;
-      }
-    }
-    .cnxhListBox{
-      margin: 20px auto 0;
-      background: #fff;
-      .contTitle{
-        width: 614px;
-        margin: 0 auto;
-      }
-      .cnxhList{
-        margin-left: 3px;
-        li{
-          float: left;
-          width: 144px;
-          margin-right: 66px;
-          img{
-            width: 100%;
-          }
-          p:nth-of-type(1){
-            font-size: 12px;
-            color: #000;
-            margin-top: 20px;
-            overflow: hidden;
-            text-overflow:ellipsis;
-            white-space: nowrap;
-          }
-          p:nth-of-type(2){
-            font-size: 12px;
-            color: #ccc;
-            margin: 18px 0 10px;
-            span{
-              color: #000;
-            }
-          }
-          &:last-of-type{
-            margin-right: 0;
-          }
-        }
-      }
-    }
-    .jcjjListBox{
-      margin: 20px auto 0;
-      background: #fff;
-      .contTitle{
-        width: 614px;
-        margin: 0 auto;
-      }
-      .jcjjLists{
-        .jcjjLeft{
-          float: left;
-          margin-left: 4px;
-        }
-        .jcjjList{
-          float: left;
-          width: 590px;
-          margin-left: 12px;
-          li{
-            float: left;
-            width: 186px;
-            height: 264px;
-            margin: 0 0 10px 10px;
-            cursor: pointer;
-            img{
-              width: 100%;
-              height: 100%;
-            }
-          }
-        }
-        .jcjjRight{
-          float: left;
-          margin-left: 24px;
-        }
-      }
-    }
-    .hdxdBox{
-      margin-top: 20px;
-      .hdxdList{
-        li{
-          float: left;
-          margin-right: 24px;
-          &:last-of-type{
-            margin-right: 0;
-          }
-        }
-      }
-    }
-    .zqbf{
-      position: relative;
-      top: 20px;
-      height: 300px;
-      .zqbfNavList{
-        z-index: 10;
-        li{
-          float: left;
-          width: 102px;
-          height: 30px;
-          line-height: 30px;
-          background: #fff;
-          border: 1px solid #ccc;
-          text-align: center;
-          cursor: pointer;
-        }
-      }
-      .zqbfContList{
-        position: absolute;
-        top: 31px;
-        background: #fff;
-        padding-top: 30px;
-        border-top: 1px solid #ccc;
-        li{
-          float: left;
-          margin: 0 0 10px 8px;
-          img{
-            float: left;
-            width: 210px;
-          }
-          .contXx{
-            float: left;
-            width: 160px;
-            margin-left: 8px;
-            margin-right: 10px;
-            p{
-              font-size: 12px;
-              line-height: 18px;
-              &:nth-of-type(2){
-                margin-top: 6px;
-              }
-            }
-          }
-        }
-      }
-    }
-    .rmphBox{
-      margin-top: 20px;
-      background: #fff;
-      .contTitle{
-        width: 614px;
-        margin: 0 auto;
-      }
-      .picBoxs{
-        width: 200px;
-        height: 316px;
-        position: relative;
-        float: left;
-        .zzcBox{
-          width: 100%;
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          background: rgba(186, 58, 38, .8);
-          p{
-            width: 164px;
-            margin: 0 auto;
-            word-wrap: break-word;
-            font-size: 12px;
-            color: #fff;
-            text-align: center;
-            &:nth-of-type(1){
-              margin-top: 20px;
-            }
-            &:nth-of-type(2){
-              margin: 16px auto 30px;
-            }
-          }
-        }
-        img{
-          width: 100%;
-          height: 316px;
-        }
-      }
-      .listBox{
-        margin-left: 16px;
-        .cont2Lists{
-          li{
-            float: left;
-            margin-left: 18px;
-            margin-bottom: 14px;
-            .cont2PicBox{
-              float: left;
-              width: 112px;
-              height: 150px;
-              img{
-                width: 100%;
-                height: 150px;
-              }
-            }
-            .cont2Cont{
-              float: left;
-              width: 148px;
-              font-size: 12px;
-              margin-left: 8px;
-              .h4{
-                overflow: hidden;
-                text-overflow:ellipsis;
-                white-space: nowrap;
-              }
-            }
-          }
-        }
-      }
-    }
-    .dateBox{
-      /deep/ .comp-full-calendar{
-        max-width: 1200px;
-        padding: 0;
-        border-radius: 50px 50px 0 0;
-        overflow: hidden;
-        margin-top: 20px;
-        /deep/ .full-calendar-header{
-          height: 120px;
-          line-height: 120px;
-          background: red;
-          /deep/ .header-center{
-            flex: none;
-            /deep/ span{
-              font-size: 20px;
-              color: #fff;
-            }
-          }
-        }
-        /deep/ .full-calendar-body{
-          margin-top: 0;
-          .weeks{
-            border: none;
-            border-bottom: 1px solid #eee;
-            .week{
-              height: 46px;
-              line-height: 48px;
-              background: #eaeaea;
-              border: none;
-              color: red;
-            }
-          }
-          .dates{
-            .week-row{
-              .day-cell{
-                &:nth-of-type(1){
-                  border-left: none;
-                }
-                .day-number{
-                  text-align: left;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    .hzfBox{
-      margin-top: 20px;
-      background: #fff;
-      .contTitle{
-        width: 614px;
-        margin: 0 auto;
-      }
-      .hzfList{
-        width: 938px;
-        margin: 0 auto;
-        li{
-          float: left;
-        }
-      }
-    }
-  }
+     /deep/ #choses{
+       /deep/ .chosesList{
+         /deep/ li:nth-of-type(6){
+           background: red;
+           color: #fff;
+         }
+       }
+     }
+     /deep/ .el-carousel{
+       /deep/ .el-carousel__container{
+         height: 261px;
+       }
+     }
+     .cnxhListBox{
+       margin: 20px auto 0;
+       background: #fff;
+       .contTitle{
+         width: 614px;
+         margin: 0 auto;
+       }
+       .cnxhList{
+         margin-left: 3px;
+         li{
+           float: left;
+           width: 144px;
+           margin-right: 66px;
+           img{
+             width: 100%;
+           }
+           p:nth-of-type(1){
+             font-size: 12px;
+             color: #000;
+             margin-top: 20px;
+             overflow: hidden;
+             text-overflow:ellipsis;
+             white-space: nowrap;
+           }
+           p:nth-of-type(2){
+             font-size: 12px;
+             color: #ccc;
+             margin: 18px 0 10px;
+             span{
+               color: #000;
+             }
+           }
+           &:last-of-type{
+             margin-right: 0;
+           }
+         }
+       }
+     }
+     .jcjjListBox{
+       margin: 20px auto 0;
+       background: #fff;
+       .contTitle{
+         width: 614px;
+         margin: 0 auto;
+       }
+       .jcjjLists{
+         .jcjjLeft{
+           float: left;
+           margin-left: 4px;
+         }
+         .jcjjList{
+           float: left;
+           width: 590px;
+           margin-left: 12px;
+           li{
+             float: left;
+             width: 186px;
+             height: 264px;
+             margin: 0 0 10px 10px;
+             cursor: pointer;
+             img{
+               width: 100%;
+               height: 100%;
+             }
+           }
+         }
+         .jcjjRight{
+           float: left;
+           margin-left: 24px;
+         }
+       }
+     }
+     .hdxdBox{
+       margin-top: 20px;
+       .hdxdList{
+         li{
+           float: left;
+           margin-right: 24px;
+           &:last-of-type{
+             margin-right: 0;
+           }
+         }
+       }
+     }
+     .zqbf{
+       position: relative;
+       top: 20px;
+       height: 300px;
+       .zqbfNavList{
+         z-index: 10;
+         li{
+           float: left;
+           width: 102px;
+           height: 30px;
+           line-height: 30px;
+           background: #fff;
+           border: 1px solid #ccc;
+           text-align: center;
+           cursor: pointer;
+         }
+       }
+       .zqbfContList{
+         position: absolute;
+         top: 31px;
+         background: #fff;
+         padding-top: 30px;
+         border-top: 1px solid #ccc;
+         li{
+           float: left;
+           margin: 0 0 10px 8px;
+           img{
+             float: left;
+             width: 210px;
+           }
+           .contXx{
+             float: left;
+             width: 160px;
+             margin-left: 8px;
+             margin-right: 10px;
+             p{
+               font-size: 12px;
+               line-height: 18px;
+               &:nth-of-type(2){
+                 margin-top: 6px;
+               }
+             }
+           }
+         }
+       }
+     }
+     .rmphBox{
+       margin-top: 20px;
+       background: #fff;
+       .contTitle{
+         width: 614px;
+         margin: 0 auto;
+       }
+       .picBoxs{
+         width: 200px;
+         height: 316px;
+         position: relative;
+         float: left;
+         .zzcBox{
+           width: 100%;
+           position: absolute;
+           bottom: 0;
+           left: 0;
+           background: rgba(186, 58, 38, .8);
+           p{
+             width: 164px;
+             margin: 0 auto;
+             word-wrap: break-word;
+             font-size: 12px;
+             color: #fff;
+             text-align: center;
+             &:nth-of-type(1){
+               margin-top: 20px;
+             }
+             &:nth-of-type(2){
+               margin: 16px auto 30px;
+             }
+           }
+         }
+         img{
+           width: 100%;
+           height: 316px;
+         }
+       }
+       .listBox{
+         margin-left: 16px;
+         .cont2Lists{
+           li{
+             float: left;
+             margin-left: 18px;
+             margin-bottom: 14px;
+             .cont2PicBox{
+               float: left;
+               width: 112px;
+               height: 150px;
+               img{
+                 width: 100%;
+                 height: 150px;
+               }
+             }
+             .cont2Cont{
+               float: left;
+               width: 148px;
+               font-size: 12px;
+               margin-left: 8px;
+               .h4{
+                 overflow: hidden;
+                 text-overflow:ellipsis;
+                 white-space: nowrap;
+               }
+             }
+           }
+         }
+       }
+     }
+     .dateBox{
+       /deep/ .comp-full-calendar{
+         max-width: 1200px;
+         padding: 0;
+         border-radius: 50px 50px 0 0;
+         overflow: hidden;
+         margin-top: 20px;
+         /deep/ .full-calendar-header{
+           height: 120px;
+           line-height: 120px;
+           background: red;
+           /deep/ .header-center{
+             flex: none;
+             /deep/ span{
+               font-size: 20px;
+               color: #fff;
+             }
+           }
+         }
+         /deep/ .full-calendar-body{
+           margin-top: 0;
+           .weeks{
+             border: none;
+             border-bottom: 1px solid #eee;
+             .week{
+               height: 46px;
+               line-height: 48px;
+               background: #eaeaea;
+               border: none;
+               color: red;
+               font-weight: normal;
+             }
+           }
+           .dates{
+             .week-row{
+               .day-cell{
+                 .day-number{
+                   text-align: left;
+                 }
+               }
+             }
+           }
+         }
+       }
+     }
+     .hzfBox{
+       margin-top: 20px;
+       background: #fff;
+       .contTitle{
+         width: 614px;
+         margin: 0 auto;
+       }
+       .hzfList{
+         width: 938px;
+         margin: 0 auto;
+         li{
+           float: left;
+         }
+       }
+     }
+   }
 </style>
