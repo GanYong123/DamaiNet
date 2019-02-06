@@ -1,10 +1,8 @@
 <template>
   <div id="home">
-<<<<<<< HEAD
     <Headers></Headers>
     <!-- <Search></Search> -->
     <Footer></Footer>
-=======
     <!-- 头部搜索 -->
     <Search></Search>
     <!-- 头部导航 -->
@@ -915,19 +913,15 @@
         </div>
       </div>
     </div>
->>>>>>> 446f398aecec549b325cea44d7d4b554e6595f8d
   </div>
 </template>
 
 <script>
-<<<<<<< HEAD
 // import Search from '@/components/shenyintao/Search'
 import Headers from '../common/Header'
 import Footer from '../common/Footer'
-=======
 import Search from '@/components/shenyintao/Search'
 import Swiper from '@/components/shenyintao/Swiper'
->>>>>>> 446f398aecec549b325cea44d7d4b554e6595f8d
 export default {
   name: 'Home',
   data () {
@@ -980,14 +974,10 @@ export default {
     this.getList()
   },
   components: {
-<<<<<<< HEAD
-    // Search,
     Headers, // 公共头部页面，个别页面不需要使用，所以这里当做组件引入。
-    Footer // 公共底部页面，个别页面不需要使用，所以这里当做组件引入。
-=======
+    Footer, // 公共底部页面，个别页面不需要使用，所以这里当做组件引入。
     Search,
     Swiper
->>>>>>> 446f398aecec549b325cea44d7d4b554e6595f8d
   }
 }
 </script>
