@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/shenyintao/Home'
-<<<<<<< HEAD
+ <<<<<<< HEAD
 import Login from '@/components/wangchaung/Login'
 =======
 >>>>>>> db0f00d14c272cef9fc4898ecad3a1487e741f79
