@@ -1,6 +1,7 @@
 <template>
   <div id="detail">
     <Headers></Headers>
+    <Search></Search>
     <div class="title-num">共&nbsp;<span>23</span>&nbsp;个商品</div>
     <div class="seactionCont">
       <div class="cont-left">
@@ -49,22 +50,32 @@
               <li @click="listMenu=2" :class="{active:listMenu==2}">最新上架</li>
             </ul>
             <div class="arrange">
-              <span :title="123" @click="arranges(0)" :class="{active:arrange===0}"><i class="iconfont icon-gengduo"></i></span>
-              <span :title="X" @click="arranges(1)" :class="{active:arrange===1}"><i class="iconfont icon-windows"></i></span>
+              <span @click="arranges(0)" :class="{active:arrange===0}"><i class="iconfont icon-gengduo"></i></span>
+              <span @click="arranges(1)" :class="{active:arrange===1}"><i class="iconfont icon-windows"></i></span>
             </div>
           </div>
           <div class="listBox">
             <ul :class="{change:arrange===1}">
-              <li>文字内容1</li>
-              <li>文字内容2</li>
-              <li>文字内容3</li>
-              <li>文字内容4</li>
-              <li>文字内容5</li>
+              <li v-for="(Item, index) in listDatas" :key="index">
+                <img src="../../assets/img/detalis.jpg" alt="">
+                <div class="list-details">
+                  <h5 class="details-title">[<span>{{Item.title.city}}</span>]{{Item.title.titleTxt}}</h5>
+                  <p class="details-subTitle">{{Item.subTitle}}</p>
+                  <p class="details-time"><span class="iconfont icon-calendar-line span-color"></span>{{Item.time}}</p>
+                  <div class="details-site"><span class="iconfont icon-weizhi span-color"></span>{{Item.site}}</div>
+                  <div class="tickets">
+                    <span style="font-weight: bold;" class="span-color">{{Item.price}}</span>
+                    <span>售票中</span>
+                  </div>
+                  <div class="electronic"><span class="iconfont icon-saoma span-color"></span>{{Item.electronic}}</div>
+                </div>
+              </li>
             </ul>
             <el-pagination
               background
               layout="total, prev, pager, next"
               :page-size="quantity"
+              @current-change="handleCurrentChange"
               :total="23">
             </el-pagination>
           </div>
@@ -79,6 +90,7 @@
 <script>
 import Headers from '../common/Header'
 import Footer from '../common/Footer'
+import Search from '../shenyintao/Search'
 export default {
   name: 'detail',
   data () {
@@ -88,16 +100,19 @@ export default {
       timePosition: 0, // 时间分类选项的切换下标
       listMenu: 0, // 推荐分类选项的切换下标
       arrange: 0, // 布局切换下标
+      paging: 0, // 分页器下标
       city: ['全部', '北京', '上海', '深圳', '杭州', '广州', '成都', '西安'],
       classify: ['全部', '音乐会', '朗诵', '曲苑杂坛', '独奏', '管弦乐', '声乐'],
       time: ['全部', '今天', '明天'],
       value13: [], // 日期选中组件的存放容器
-      quantity: 6 // 分页器组件的每页显示数量
+      quantity: 6, // 分页器组件的每页显示数量
+      listDatas: []
     }
   },
   components: {
     Headers,
-    Footer
+    Footer,
+    Search
   },
   methods: {
     citytab (index) {
@@ -135,7 +150,22 @@ export default {
     },
     arranges (tag) { // 布局切换
       this.arrange = tag
+    },
+    handleCurrentChange (val) {
+      let page = val
+      this.paging = page - 1
+      this.getListData()
+    },
+    getListData () {
+      const that = this
+      that.$http.get('https://easy-mock.com/mock/5c42c815fa4bae6ac3633357/DamaiNet/screen').then((res) => {
+        console.log(res.data.ScreenData[that.paging].lists)
+        this.listDatas = res.data.ScreenData[that.paging].lists
+      })
     }
+  },
+  created () {
+    this.getListData()
   }
 }
 </script>
@@ -282,12 +312,69 @@ export default {
         }
       }
       .listBox{
+        padding: 0 10px;
         ul{
           li{
-            height: 300px;
-            margin-top: 30px;
-            border: 1px solid red;
-            font-size: 30px;
+            height: 224px;
+            margin-top: 22px;
+            padding-top: 18px;
+            border-bottom: 1px dashed #cecece;
+            overflow: hidden;
+            img{
+              float: left;
+              margin-left: 10px;
+            }
+          .list-details{
+            float: left;
+            margin-left: 20px;
+              .span-color{
+                color: #ff3c1c;
+                display: inline-block;
+                margin-right: 8px;
+              }
+              .details-title{
+                height: 30px;
+                line-height: 30px;
+                font-size: 16px;
+                color: #1b1b1b;
+                font-weight: normal;
+              }
+              .details-subTitle{
+                height: 27px;
+                line-height: 27px;
+                font-size: 12px;
+                color: #999999;
+              }
+              .details-time{
+                height: 30px;
+                line-height: 30px;
+                font-size: 12px;
+                color: #999999;
+              }
+              .details-site{
+                height: 30px;
+                line-height: 30px;
+                font-size: 13px;
+                color: #1b1b1b;
+                cursor: pointer;
+              }
+              .tickets{
+                height: 30px;
+                line-height: 30px;
+                font-size: 13px;
+                span:last-of-type{
+                  display: inline-block;
+                  margin-left: 8px;
+                  color: #999999;
+                }
+              }
+              .electronic{
+                height: 30px;
+                line-height: 30px;
+                font-size: 13px;
+                color: #1b1b1b;
+              }
+            }
           }
         }
         .change{
@@ -295,7 +382,8 @@ export default {
           flex-wrap: wrap;
           justify-content: space-between;
           li{
-            width: 300px;
+            width: 450px;
+            border: none;
           }
         }
       }
