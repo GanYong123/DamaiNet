@@ -76,12 +76,42 @@
               layout="total, prev, pager, next"
               :page-size="quantity"
               @current-change="handleCurrentChange"
-              :total="23">
+              :total="listquantity">
             </el-pagination>
           </div>
         </div>
       </div>
-      <div class="cont-right"></div>
+      <div class="cont-right">
+        <div class="recommend">
+          <h3>您可能还喜欢</h3>
+          <ul>
+            <li>
+              <img src="../../assets/img/detalis.jpg" alt="图片">
+              <div class="recommend-txt">
+                <h6>推荐标题文字内容</h6>
+                <p>地址地址地址地址地址地址</p>
+                <p>时间时间时间时间时间时间</p>
+                <p>
+                  <span>98元</span>
+                  <span>起</span>
+                </p>
+              </div>
+            </li>
+            <li>
+              <img src="../../assets/img/detalis.jpg" alt="图片">
+              <div class="recommend-txt">
+                <h6>推荐标题文字内容</h6>
+                <p>地址地址地址地址地址地址</p>
+                <p>时间时间时间时间时间时间</p>
+                <p>
+                  <span>98元</span>
+                  <span>起</span>
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
     <Footer></Footer>
   </div>
@@ -106,6 +136,7 @@ export default {
       time: ['全部', '今天', '明天'],
       value13: [], // 日期选中组件的存放容器
       quantity: 6, // 分页器组件的每页显示数量
+      listquantity: 0,
       listDatas: []
     }
   },
@@ -153,14 +184,20 @@ export default {
     },
     handleCurrentChange (val) {
       let page = val
-      this.paging = page - 1
+      this.paging = page - 1 // 分页器组件默认从1开始，拿到组件的分页器值并将它变成从0开始
       this.getListData()
     },
     getListData () {
       const that = this
       that.$http.get('https://easy-mock.com/mock/5c42c815fa4bae6ac3633357/DamaiNet/screen').then((res) => {
-        console.log(res.data.ScreenData[that.paging].lists)
-        this.listDatas = res.data.ScreenData[that.paging].lists
+        that.listDatas = res.data.ScreenData[that.paging].lists // 使用组件的下标来获取对应分页的数据
+        if (that.listquantity === 0) { // 分页器等于0的时候则为初始状态。
+          let listLength = 0 // 储存数据的总长度
+          for (var i = 0; i < res.data.ScreenData.length; i++) {
+            listLength += res.data.ScreenData[i].lists.length // 可能出现最后一页数据与之前页数据不相等的情况，这里做了一个加法，让每页数据相加。
+          }
+          that.listquantity = listLength // 获取到的数据条目赋值给组件
+        }
       })
     }
   },
@@ -333,11 +370,15 @@ export default {
                 margin-right: 8px;
               }
               .details-title{
+                width: 240px;
                 height: 30px;
                 line-height: 30px;
                 font-size: 16px;
                 color: #1b1b1b;
                 font-weight: normal;
+                overflow: hidden;
+                text-overflow:ellipsis;
+                white-space: nowrap;
               }
               .details-subTitle{
                 height: 27px;
@@ -352,11 +393,15 @@ export default {
                 color: #999999;
               }
               .details-site{
+                width: 240px;
                 height: 30px;
                 line-height: 30px;
                 font-size: 13px;
                 color: #1b1b1b;
                 cursor: pointer;
+                overflow: hidden;
+                text-overflow:ellipsis;
+                white-space: nowrap;
               }
               .tickets{
                 height: 30px;
@@ -382,7 +427,7 @@ export default {
           flex-wrap: wrap;
           justify-content: space-between;
           li{
-            width: 450px;
+            width: 430px;
             border: none;
           }
         }
@@ -409,7 +454,68 @@ export default {
     }
     .cont-right{
       width: 256px;
-      border: 1px solid black;
+      .recommend{
+        padding-bottom: 15px;
+        background: #ffffff;
+        border: 1px solid #e6e6e6;
+        h3{
+          height: 38px;
+          line-height: 38px;
+          font-size: 12px;
+          text-indent: 16px;
+          font-weight: normal;
+          color: #495060;
+          background: #e6e6e6;
+        }
+        ul{
+          li{
+            margin: 20px 0 0 15px;
+            overflow: hidden;
+            img{
+              width: 98px;
+              height: 132px;
+              float: left;
+            }
+            .recommend-txt{
+              float: left;
+              margin-left: 10px;
+              h6{
+                height: 62px;
+                font-size: 12px;
+                color: #1b1b1b;
+                font-weight: normal;
+              }
+              p:nth-of-type(1),p:nth-of-type(2){
+                height: 20px;
+                width: 120px;
+                line-height: 20px;
+                font-size: 12px;
+                color: #999999;
+                overflow: hidden;
+                text-overflow:ellipsis;
+                white-space: nowrap;
+              }
+              p:nth-of-type(3){
+                height: 16px;
+                line-height: 16px;
+                font-size: 12px;
+                margin-top: 12px;
+                span{
+                  display: inline-block;
+                }
+                span:first-of-type{
+                  color: #ff3c1b;
+                  margin-right: 8px;
+                  font-weight: bold;
+                }
+                span:last-of-type{
+                  color: #999999;
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
