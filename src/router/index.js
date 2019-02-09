@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/shenyintao/Home'
+import Screen from '@/components/Ganyong/Screen'
 import Detail from '@/components/Ganyong/Detail'
 import Opera from '@/components/shenyintao/Opera'
 import Sports from '@/components/shenyintao/Sports'
@@ -24,7 +25,12 @@ export default new Router({
       component: Login
     },
     {
-      path: '/detail',
+      path: '/screen', // 筛选页
+      name: 'Screen',
+      component: Screen
+    },
+    {
+      path: '/detail', // 详情页
       name: 'Detail',
       component: Detail
     },

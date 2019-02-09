@@ -76,7 +76,7 @@
         <el-tabs v-model="activeName" @tab-click="handleClick">
           <el-tab-pane label="今日推荐" name="first">
             <ul class="cont1CtList clear">
-              <li>
+              <li @click="Title()">
                 <div class="picBox">
                   <img  src="../../assets/img/sing3.jpg" alt="">
                   <div class="zzc">
@@ -84,7 +84,7 @@
                     <p>2017.12.03 19:30</p>
                   </div>
                 </div>
-                <p><a href="#">11111111111111111111111111111111</a></p>
+                <p><a href="#">{{recommend}}</a></p>
                 <p>票价：<span>￥927</span></p>
               </li>
               <li>
@@ -930,7 +930,8 @@ export default {
       contData: [],
       show: false,
       index: 0,
-      activeName: 'first'
+      activeName: 'first',
+      recommend: '这里只是一个暂时性的标题文字数据'
     }
   },
   methods: {
@@ -964,9 +965,17 @@ export default {
       this.$http.get(this.$url + 'lbt').then((res) => {
         this.userData = res.data.homeLtLst
         this.contData = res.data.homeLtLst.cont
-        console.log(this.contData)
+        console.log(this.userData)
       }).catch((error) => {
         console.log(error)
+      })
+    },
+    Title () { // 跳转时将标题或者其他参数传递给详情页
+      this.$router.push({
+        name: 'Detail',
+        params: {
+          titleData: this.recommend
+        }
       })
     }
   },
