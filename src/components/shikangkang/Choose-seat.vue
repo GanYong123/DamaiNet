@@ -1,5 +1,6 @@
   <template>
-    <div id="choose"></div>
+    <div id="choose">
+    </div>
   </template>
 
 <script>
