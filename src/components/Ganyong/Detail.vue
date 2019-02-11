@@ -41,7 +41,7 @@
             <input type="button" value="1998元">
           </div>
         </div>
-        <div class="buy-btn">选座购买</div>
+        <router-link class="buy-btn" to = "/choose-seat" tag="div">选座购买</router-link>
       </div>
       <div class="details-grade"></div>
     </div>
