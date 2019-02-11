@@ -36,7 +36,7 @@
             <input  v-for="(PriceItem, index) in price" :key="index" :value="PriceItem" :class="{'active':index === slctTime}" type="button">
           </div>
         </div>
-        <div class="buy-btn">选座购买</div>
+        <router-link class="buy-btn" to = "/choose-seat" tag="div">选座购买</router-link>
       </div>
       <div class="details-grade">
         <div class="grade-cont">
