@@ -109,6 +109,33 @@
           <div class="basic">
             <h5><span>项目介绍</span><i></i></h5>
           </div>
+          <div class="introduce">
+            <h5>英文站入口</h5>
+            <p>英文站购买链接：<a href="www.baidu.com">www.baidu.com</a></p>
+            <h5>演出介绍</h5>
+            <p>
+              世艇典原茧窖乐剧衝<br/>
+              猫的足迹<br/>
+              超过20#语言_ 30个国家，300座城市，7300万观众超过20沖语言，30个国家，300座域市■ 7300万观众星过20种语言■ 3阶国冡，300座 城市，7300万观众星过20种语言，30^国冡，300座域市，7300万观众超过20#^言，30个国家，300座城市，7300万观众超过20?1晤言， 国家■ 300座域市■ 7300万观众超过20#^言，30个国家，300座城市，7300万观众 網7座托尼奖，莫获翻弗奖、格菜美奖等全球主要奖项<br/>
+              伦麵区百老汇有史贼狐连续公演最久的音乐剧之一
+            </p>
+            <img src="../../assets/img/detailsPic1.jpg" alt="图片">
+            <p>
+              伦麵区百老汇有史贼狐连续公演最久的音乐剧之一<br/>
+              伦麵区百老汇有史贼狐连续公演最久的音乐剧之一<br/>
+              伦麵区百老汇有史贼狐连续公演最久的音乐剧之一<br/>
+            </p>
+          </div>
+          <div class="basic">
+            <h5><span>写剧评</span><i></i></h5>
+          </div>
+          <div class="grade">
+            <div class="grade-wind">
+              <div>
+                打个分吧：<el-rate v-model="value3" :show-text="texts" allow-half></el-rate>
+              </div>
+            </div>
+          </div>
         </div>
         <div v-show="msgTab === 1" class="message-cont">2</div>
         <div v-show="msgTab === 2" class="message-cont">3</div>
@@ -179,6 +206,8 @@ export default {
       historyData: ['大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）', '大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）', '大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）', '大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）', '大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）', '大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）', '大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）', '大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）', '大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）'],
       slctTime: 0,
       msgTab: 0,
+      value3: null,
+      texts: [0, 1, 2, 3, 4],
       Title: this.$route.params.titleData
     }
   },
@@ -525,6 +554,38 @@ export default {
                   margin-top: 4px;
                 }
               }
+            }
+          }
+        }
+        .introduce{
+          margin: 20px 0 0 102px;
+          color: #495060;
+          h5{
+            width: 756px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+            text-indent: 11px;
+            background: #eeeeee;
+            font-weight: normal;
+          }
+          p{
+            width: 756px;
+            line-height: 24px;
+            padding: 30px 2px;
+            font-size: 12px;
+            a{
+              color: #495060;
+            }
+          }
+          img{
+            margin: 0 auto;
+          }
+        }
+        .grade{
+          .grade-wind{
+            /deep/.el-rate{
+              display: inline-block;
             }
           }
         }
