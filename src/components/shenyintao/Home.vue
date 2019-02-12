@@ -926,6 +926,7 @@ export default {
       show: false,
       index: 0,
       activeName: 'first',
+      off: true,
       recommend: '这里只是一个暂时性的标题文字数据'
     }
   },
@@ -951,7 +952,7 @@ export default {
     },
     open (i) {
       this.index = i
-      this.getList() // 每次划过重新请求一次
+      this.Mores = this.userData[this.index].More // 单独请求More的数据
       this.show = true
     },
     close: function () {
@@ -961,7 +962,6 @@ export default {
       this.$http.get(this.$url + 'lbt').then((res) => {
         this.userData = res.data.homeLtLst
         this.contData = res.data.homeLtLst.cont
-        this.Mores = res.data.homeLtLst[this.index].More // 单独请求More的数据
       }).catch((error) => {
         console.log(error)
       })
