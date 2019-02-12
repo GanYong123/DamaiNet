@@ -127,13 +127,23 @@
             </p>
           </div>
           <div class="basic">
-            <h5><span>写剧评</span><i></i></h5>
+            <h5><span>写剧评&nbsp;&nbsp;&nbsp;&nbsp;</span><i></i></h5>
           </div>
           <div class="grade">
             <div class="grade-wind">
-              <div>
-                打个分吧：<el-rate v-model="value3" :show-text="texts" allow-half></el-rate>
+              <div class="star">
+                打个分吧：<el-rate text-color="#ff3c1b" :colors="['#ff3c1b', '#ff3c1b', '#ff3c1b']" @change="getGrade" v-model="value3" show-score allow-half></el-rate>
+                <el-rate
+                  :value="value3"
+                  disabled
+                  show-score
+                  text-color="#ff9900"
+                  score-template="{value}">
+                </el-rate>
+                <el-button :plain="true"></el-button>
               </div>
+              <textarea ref="Textwind" maxlength="10000" placeholder="写个评价吧，10-10000字"></textarea>
+              <el-button class="grade-btn" :plain="true" @click="Grade">评价</el-button>
             </div>
           </div>
         </div>
@@ -206,9 +216,11 @@ export default {
       historyData: ['大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）', '大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）', '大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）', '大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）', '大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）', '大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）', '大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）', '大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）', '大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）'],
       slctTime: 0,
       msgTab: 0,
-      value3: null,
-      texts: [0, 1, 2, 3, 4],
-      Title: this.$route.params.titleData
+      Txt: '', // 储存文本框输入的文字
+      value3: null, // 评分时组件的分值
+      value12: 0, // 评价后的分值
+      Title: this.$route.params.titleData,
+      off: true
     }
   },
   methods: {
@@ -219,6 +231,33 @@ export default {
       let BarLeft = this.$refs.bar
       this.msgTab = tag
       BarLeft.style.left = (this.msgTab * 88) + 'px'
+    },
+    getGrade () {
+      console.log(this.value3 !== null)
+    },
+    Grade () {
+      let gradeData = this.$refs.Textwind.value
+      if (this.off) { // 防止点击过快/去掉也可
+        this.off = false
+        if (gradeData !== '' && gradeData.length >= 10) {
+          this.Txt = gradeData
+          this.$refs.Textwind.value = ''
+          this.$message({
+            message: '评价成功',
+            type: 'success',
+            center: true
+          })
+        } else {
+          this.$message({
+            message: '内容不能为空或者字数少于10',
+            type: 'error',
+            center: true
+          })
+        }
+        setTimeout(() => {
+          this.off = true
+        }, 1000)
+      }
     }
   }
 }
@@ -584,8 +623,41 @@ export default {
         }
         .grade{
           .grade-wind{
+            margin-left: 103px;
+            .star{
+              height: 24px;
+              line-height: 24px;
+              font-size: 14px;
+              color: #495060;
+            }
+            textarea{
+              width: 738px;
+              height: 92px;
+              line-height: 22px;
+              border: 1px solid #dddee1;
+              border-radius: 3px;
+              margin-top: 5px;
+              padding-left: 4px;
+            }
+            .grade-btn{
+              width: 150px;
+              height: 40px;
+              line-height: 40px;
+              border-radius: 3px;
+              font-size: 12px;
+              margin: 20px 0 20px 20px;
+              padding: 0;
+              border: none;
+              color: #ffffff;
+              text-align: center;
+              background: #ff3c1b;
+              cursor: pointer;
+            }
             /deep/.el-rate{
               display: inline-block;
+              .el-rate__text{
+                font-weight: bold;
+              }
             }
           }
         }

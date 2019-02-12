@@ -33,15 +33,9 @@
                 <h2 class="title">{{item.smTitle}}</h2>
                 <p class="rt">></p>
                 <ul class="tlileList clear">
-                  <li v-for="(item, k) in userData" :key="k">
-                    <a href="#">{{item.More}}</a>
-                  </li><!--
-                  <li>
-                    <a href="#">子类2</a>
+                  <li v-for="(item, k) in Mores" :key="k">
+                    <a href="#">{{item}}</a>
                   </li>
-                  <li>
-                    <a href="#">子类3</a>
-                  </li>-->
                 </ul>
                 <span class="close" @click="close()">X</span>
               </div>
@@ -928,6 +922,7 @@ export default {
     return {
       userData: [],
       contData: [],
+      Mores: [],
       show: false,
       index: 0,
       activeName: 'first',
@@ -956,6 +951,7 @@ export default {
     },
     open (i) {
       this.index = i
+      this.getList() // 每次划过重新请求一次
       this.show = true
     },
     close: function () {
@@ -965,7 +961,7 @@ export default {
       this.$http.get(this.$url + 'lbt').then((res) => {
         this.userData = res.data.homeLtLst
         this.contData = res.data.homeLtLst.cont
-        console.log(this.userData)
+        this.Mores = res.data.homeLtLst[this.index].More // 单独请求More的数据
       }).catch((error) => {
         console.log(error)
       })
