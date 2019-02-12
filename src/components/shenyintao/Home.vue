@@ -33,7 +33,7 @@
                 <h2 class="title">{{item.smTitle}}</h2>
                 <p class="rt">></p>
                 <ul class="tlileList clear">
-                  <li v-for="(item, k) in Mores" :key="k">
+                  <li v-for="(item, k) in MoresData" :key="k">
                     <a href="#">{{item}}</a>
                   </li>
                 </ul>
@@ -961,7 +961,7 @@ export default {
       this.$http.get(this.$url + 'lbt').then((res) => {
         this.userData = res.data.homeLtLst
         this.contData = res.data.homeLtLst.cont
-        this.Mores = res.data.homeLtLst[this.index].More // 单独请求More的数据
+        this.MoresData = res.data.homeLtLst[this.index].More // 单独请求More的数据
       }).catch((error) => {
         console.log(error)
       })
