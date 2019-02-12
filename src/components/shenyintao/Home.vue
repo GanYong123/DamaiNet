@@ -33,7 +33,7 @@
                 <h2 class="title">{{item.smTitle}}</h2>
                 <p class="rt">></p>
                 <ul class="tlileList clear">
-                  <li v-for="(item, k) in MoresData" :key="k">
+                  <li v-for="(item, k) in Mores" :key="k">
                     <a href="#">{{item}}</a>
                   </li>
                 </ul>
@@ -41,16 +41,16 @@
               </div>
               <h4 class="h4">相关热门</h4>
               <ul class="contCtList clear">
-                <li>
+                <li v-for="(item, a) in Conts" :key="a">
                   <div class="picBox">
                     <img src="../../assets/img/sing3.jpg" alt="">
                     <div class="zzc">
-                      <p>我六断织身候山难社青众上入。</p>
-                      <p>2017.12.03 19:30</p>
+                      <p>{{item.zzcTitle}}</p>
+                      <p>{{item.zzcDate}}</p>
                     </div>
                   </div>
-                  <p><a href="#">11111111111111111111111111111111</a></p>
-                  <p>票价：<span>￥927</span></p>
+                  <p><a href="#">{{item.contTitle}}</a></p>
+                  <p>票价：<span>￥{{item.money}}</span></p>
                 </li>
               </ul>
             </div>
@@ -923,9 +923,11 @@ export default {
       userData: [],
       contData: [],
       Mores: [],
+      Conts: [],
       show: false,
       index: 0,
       activeName: 'first',
+      off: true,
       recommend: '这里只是一个暂时性的标题文字数据'
     }
   },
@@ -951,7 +953,8 @@ export default {
     },
     open (i) {
       this.index = i
-      this.getList() // 每次划过重新请求一次
+      this.Mores = this.userData[this.index].More // 单独请求More的数据
+      this.Conts = this.userData[this.index].cont // 单独请求cont的数据
       this.show = true
     },
     close: function () {
@@ -960,8 +963,6 @@ export default {
     getList () {
       this.$http.get(this.$url + 'lbt').then((res) => {
         this.userData = res.data.homeLtLst
-        this.contData = res.data.homeLtLst.cont
-        this.MoresData = res.data.homeLtLst[this.index].More // 单独请求More的数据
       }).catch((error) => {
         console.log(error)
       })
