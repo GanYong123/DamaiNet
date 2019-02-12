@@ -9,7 +9,7 @@ import Classicaldance from '@/components/shenyintao/Classicaldance'
 import Parenting from '@/components/shenyintao/Parenting'
 import Rock from '@/components/shenyintao/Rock'
 import Login from '@/components/wangchuang/Login'
-import Choose from '@/components/shikangkang/Choose'
+import Order from '@/components/shikangkang/Order'
 Vue.use(Router)
 
 export default new Router({
@@ -62,8 +62,8 @@ export default new Router({
     },
     {
       path: '/choose-seat',
-      name: 'chose-seat',
-      component: Choose
+      name: 'Order',
+      component: Order
     }
   ]
 })
