@@ -33,15 +33,15 @@
                 <h2 class="title">{{item.smTitle}}</h2>
                 <p class="rt">></p>
                 <ul class="tlileList clear">
-                  <li>
-                    <a href="#">子类1</a>
-                  </li>
+                  <li v-for="(item, k) in userData" :key="k">
+                    <a href="#">{{item.More}}</a>
+                  </li><!--
                   <li>
                     <a href="#">子类2</a>
                   </li>
                   <li>
                     <a href="#">子类3</a>
-                  </li>
+                  </li>-->
                 </ul>
                 <span class="close" @click="close()">X</span>
               </div>
