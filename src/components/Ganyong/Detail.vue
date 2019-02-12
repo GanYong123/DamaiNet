@@ -72,7 +72,7 @@
     </div>
     <div class="message-warp">
       <div class="message-left-warp">
-        <ul>
+        <ul class="message-left-list">
           <li @click="magBtn(0)" :class="{'active':msgTab === 0}">演出信息</li>
           <li @click="magBtn(1)" :class="{'active':msgTab === 1}">精彩剧评</li>
           <li @click="magBtn(2)" :class="{'active':msgTab === 2}">演出方式</li>
@@ -132,19 +132,28 @@
           <div class="grade">
             <div class="grade-wind">
               <div class="star">
-                打个分吧：<el-rate text-color="#ff3c1b" :colors="['#ff3c1b', '#ff3c1b', '#ff3c1b']" @change="getGrade" v-model="value3" show-score allow-half></el-rate>
-                <el-rate
-                  :value="value3"
-                  disabled
-                  show-score
-                  text-color="#ff9900"
-                  score-template="{value}">
-                </el-rate>
-                <el-button :plain="true"></el-button>
+                打个分吧：<el-rate text-color="#ff3c1b" :colors="['#ff3c1b', '#ff3c1b', '#ff3c1b']" void-color="#999999" @change="getGrade" v-model="value3" :disabled="false" show-score allow-half></el-rate>
               </div>
               <textarea ref="Textwind" maxlength="10000" placeholder="写个评价吧，10-10000字"></textarea>
               <el-button class="grade-btn" :plain="true" @click="Grade">评价</el-button>
             </div>
+          </div>
+          <div class="grade-cont">
+            <ul class="grade-cont-list">
+              <li class="grade-cont-li" v-for="(gradeItem, index) in gradeTxt" :key="index">
+                <div class="grade-cont-user">
+                  <span></span>
+                  <span>用户名{{index}}</span>
+                </div>
+                <div class="grade-cont-txt">
+                  <p>{{gradeItem.Texts}}</p>
+                  <div>
+                    <el-rate :value="gradeItem.Num" :colors="['#ff3c1b', '#ff3c1b', '#ff3c1b']" disabled-void-color="#999999" text-color="#ff9900" allow-half disabled></el-rate>
+                    <span>2019-01-02 19:01:23</span>
+                  </div>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
         <div v-show="msgTab === 1" class="message-cont">2</div>
@@ -154,8 +163,8 @@
       <div class="message-right-warp">
         <div class="recommend message-right-cont">
           <h5>热门推荐</h5>
-          <ul>
-            <li v-for="(Item, index) in recommendData" :key="index">
+          <ul class="message-right-list">
+            <li class="message-right-li" v-for="(Item, index) in recommendData" :key="index">
               <img v-if="index===0" src="../../assets/img/detailsPic1.jpg" alt="">
               <p >{{Item.txt}}</p>
               <p v-if="index!=0">{{Item.timer}}</p>
@@ -216,9 +225,17 @@ export default {
       historyData: ['大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）', '大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）', '大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）', '大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）', '大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）', '大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）', '大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）', '大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）', '大型多媒体儿童互动剧《爱丽丝梦游仙境》（11月）'],
       slctTime: 0,
       msgTab: 0,
-      Txt: '', // 储存文本框输入的文字
       value3: null, // 评分时组件的分值
-      value12: 0, // 评价后的分值
+      gradeTxt: [
+        {
+          Texts: '文字内容111',
+          Num: 1
+        },
+        {
+          Texts: '文字内容222',
+          Num: 2
+        }
+      ],
       Title: this.$route.params.titleData,
       off: true
     }
@@ -233,24 +250,31 @@ export default {
       BarLeft.style.left = (this.msgTab * 88) + 'px'
     },
     getGrade () {
-      console.log(this.value3 !== null)
+      console.log(this.value3 > 0)
     },
     Grade () {
       let gradeData = this.$refs.Textwind.value
-      if (this.off) { // 防止点击过快/去掉也可
+      if (this.off) { // 防止评论点击过快
         this.off = false
-        if (gradeData !== '' && gradeData.length >= 10) {
-          this.Txt = gradeData
-          this.$refs.Textwind.value = ''
+        if (gradeData === '' || gradeData.length < 10) {
           this.$message({
-            message: '评价成功',
-            type: 'success',
+            message: '评论内容不能少于10个字喵~',
+            type: 'error',
+            center: true
+          })
+        } else if (!this.value3) {
+          this.$message({
+            message: '记得评分喵~',
+            type: 'error',
             center: true
           })
         } else {
+          this.$refs.Textwind.value = ''
+          this.gradeTxt.push({Texts: gradeData, Num: this.value3})
+          this.value3 = 0
           this.$message({
-            message: '内容不能为空或者字数少于10',
-            type: 'error',
+            message: '评价成功喵~',
+            type: 'success',
             center: true
           })
         }
@@ -510,7 +534,7 @@ export default {
       width: 918px;
       background: #ffffff;
       float: left;
-      ul{
+      .message-left-list{
         position: relative;
         overflow: hidden;
         li{
@@ -532,7 +556,7 @@ export default {
           background: #ff3c1b;
           transition: .3s;
         }
-        li.active{
+        .message-right-li.active{
           color: #ff3c1b;
         }
       }
@@ -658,6 +682,55 @@ export default {
               .el-rate__text{
                 font-weight: bold;
               }
+            }
+          }
+        }
+        .grade-cont{
+          padding-bottom: 52px;
+          .grade-cont-list{
+            .grade-cont-li{
+              margin-top: 36px;
+              overflow: hidden;
+              .grade-cont-user{
+                float: left;
+                span{
+                  display: block;
+                }
+                span:first-of-type{
+                  width: 44px;
+                  height: 44px;
+                  border: 1px solid #cccccc;
+                  border-radius: 3px;
+                }
+                span:last-of-type{
+                  width: 44px;
+                  font-size: 12px;
+                  margin-top: 10px;
+                  color: #495060;
+                  text-align: center;
+                }
+              }
+              .grade-cont-txt{
+                width: 710px;
+                padding: 4px 22px;
+                margin-left: 53px;
+                padding-left: 30px;
+                font-size: 12px;
+                color: #495060;
+                background: #f0f0f0;
+                float: left;
+                p{
+                  padding: 20px 0;
+                }
+                div{
+                  /deep/.el-rate{
+                    display: inline-block;
+                  }
+                }
+              }
+            }
+            .grade-cont-li:first-of-type{
+              margin-top: 0;
             }
           }
         }
