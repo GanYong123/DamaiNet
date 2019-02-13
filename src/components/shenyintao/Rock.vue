@@ -584,7 +584,7 @@ export default {
       }
     }
     .hzfBox{
-      margin-top: 20px;
+      margin: 20px auto 20px;
       background: #fff;
       .contTitle{
         width: 614px;

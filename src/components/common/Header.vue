@@ -91,12 +91,12 @@ export default {
           left: -34.5px;
           top: 30px;
           width: 125px;
-          height: 76px;
           text-align: center;
           border-radius: 4px;
           box-shadow: 0px 0px 5px 1px #ccc;
           overflow: hidden;
           background: #ffffff;
+          z-index: 32;
           li{
             height: 38px;
             line-height: 38px;
