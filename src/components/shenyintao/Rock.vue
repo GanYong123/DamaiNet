@@ -103,62 +103,18 @@
     <!-- 专区部分 -->
     <div class="zqbf middle">
       <ul class="zqbfNavList clear">
-        <li>音乐会专区</li>
-        <li>舞蹈专区</li>
+        <li v-for="(item, i) in userData" :key="i" :class="{ 'active' : i === index ? 'active' : ''}" @click="first(i)">
+          {{item.title}}
+        </li>
       </ul>
       <ul class="zqbfContList clear">
-        <li>
+        <li v-for="(item, j) in contData" :key="j">
           <img src="../../assets/img/szxz.jpg" alt="">
           <div class="contXx">
-            <p>小柯音乐剧未来三部曲之《我变了，我没变》</p>
-            <p>2018.1.8-2018.1.9</p>
-            <p>深圳市少年宫剧场</p>
-            <p>￥ 120起</p>
-          </div>
-        </li>
-        <li>
-          <img src="../../assets/img/szxz.jpg" alt="">
-          <div class="contXx">
-            <p>小柯音乐剧未来三部曲之《我变了，我没变》</p>
-            <p>2018.1.8-2018.1.9</p>
-            <p>深圳市少年宫剧场</p>
-            <p>￥ 120起</p>
-          </div>
-        </li>
-        <li>
-          <img src="../../assets/img/szxz.jpg" alt="">
-          <div class="contXx">
-            <p>小柯音乐剧未来三部曲之《我变了，我没变》</p>
-            <p>2018.1.8-2018.1.9</p>
-            <p>深圳市少年宫剧场</p>
-            <p>￥ 120起</p>
-          </div>
-        </li>
-        <li>
-          <img src="../../assets/img/szxz.jpg" alt="">
-          <div class="contXx">
-            <p>小柯音乐剧未来三部曲之《我变了，我没变》</p>
-            <p>2018.1.8-2018.1.9</p>
-            <p>深圳市少年宫剧场</p>
-            <p>￥ 120起</p>
-          </div>
-        </li>
-        <li>
-          <img src="../../assets/img/szxz.jpg" alt="">
-          <div class="contXx">
-            <p>小柯音乐剧未来三部曲之《我变了，我没变》</p>
-            <p>2018.1.8-2018.1.9</p>
-            <p>深圳市少年宫剧场</p>
-            <p>￥ 120起</p>
-          </div>
-        </li>
-        <li>
-          <img src="../../assets/img/szxz.jpg" alt="">
-          <div class="contXx">
-            <p>小柯音乐剧未来三部曲之《我变了，我没变》</p>
-            <p>2018.1.8-2018.1.9</p>
-            <p>深圳市少年宫剧场</p>
-            <p>￥ 120起</p>
+            <p>{{item.ContTitle}}</p>
+            <p>{{item.ContTime}}</p>
+            <p>{{item.ContSmTitle}}</p>
+            <p>￥ {{item.ContMoney}}起</p>
           </div>
         </li>
       </ul>
@@ -312,6 +268,32 @@ import Choses from '@/components/shenyintao/Choses'
 import Swiper from '@/components/shenyintao/Swiper'
 export default {
   name: 'Rock',
+  data () {
+    return {
+      userData: [],
+      contData: [],
+      index: 0
+    }
+  },
+  methods: {
+    getSpacil () {
+      this.$http.get(this.$url + 'special').then((res) => {
+        this.userData = res.data.special
+        this.contData = this.userData[0].contList
+        console.log(this.userData)
+      }).catch((error) => {
+        console.log(error)
+      })
+    },
+    first (i) {
+      this.index = i
+      this.contData = this.userData[this.index].contList
+      console.log(this.contData)
+    }
+  },
+  created () {
+    this.getSpacil()
+  },
   components: {
     Header,
     Search,
@@ -436,8 +418,13 @@ export default {
           line-height: 30px;
           background: #fff;
           border: 1px solid #ccc;
+          border-bottom: none;
           text-align: center;
           cursor: pointer;
+        }
+        li.active{
+          border: 1px solid red;
+          border-bottom: 1px solid #fff;
         }
       }
       .zqbfContList{
@@ -446,6 +433,7 @@ export default {
         background: #fff;
         padding-top: 30px;
         border-top: 1px solid #ccc;
+        z-index: -1;
         li{
           float: left;
           margin: 0 0 10px 8px;
@@ -461,6 +449,9 @@ export default {
             p{
               font-size: 12px;
               line-height: 18px;
+              overflow: hidden;
+              text-overflow:ellipsis;
+              white-space: nowrap;
               &:nth-of-type(2){
                 margin-top: 6px;
               }
