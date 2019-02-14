@@ -9,6 +9,10 @@ import Classicaldance from '@/components/shenyintao/Classicaldance'
 import Parenting from '@/components/shenyintao/Parenting'
 import Rock from '@/components/shenyintao/Rock'
 import Login from '@/components/wangchuang/Login'
+import Register from '@/components/wangchuang/Register'
+import Person from '@/components/wangchuang/Person'
+import Inform from '@/components/wangchuang/Inform'
+import Psona from '@/components/wangchuang/Psona'
 import Order from '@/components/shikangkang/Order'
 Vue.use(Router)
 
@@ -24,6 +28,30 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      // 注册页
+      path: '/register',
+      name: 'Register',
+      component: Register
+    },
+    {
+      // 订单页
+      path: '/person',
+      name: 'Person',
+      component: Person
+    },
+    {
+      // 购票页
+      path: '/inform',
+      name: 'Inform',
+      component: Inform
+    },
+    {
+      // 个人详情
+      path: '/psona',
+      name: 'Psona',
+      component: Psona
     },
     {
       path: '/screen', // 筛选页
