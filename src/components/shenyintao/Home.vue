@@ -17,7 +17,7 @@
           <router-link to="/rock" tag="li" >摇滚</router-link>
         </ul>
         <ul class="navLeftList clear">
-          <li v-for="(item, i) in userData" :class="{ 'active' : i === index+1 }" :key="i" @mouseenter="open(i)">
+          <li v-for="(item, i) in userData" :key="i" :class="{ 'active' : i === index+1 }" @mouseenter="open(i)">
             <span>
               {{item.Title}}
             </span>
@@ -67,7 +67,7 @@
     <div class="contBoxes">
       <!-- 推荐栏 -->
       <div class="cont1Box middle">
-        <el-tabs v-model="activeName" @tab-click="handleClick">
+        <el-tabs v-model="activeName">
           <el-tab-pane label="今日推荐" name="first">
             <ul class="cont1CtList clear">
               <li @click="Title()">
@@ -927,14 +927,10 @@ export default {
       show: false,
       index: 0,
       activeName: 'first',
-      off: true,
       recommend: '这里只是一个暂时性的标题文字数据'
     }
   },
   methods: {
-    handleClick (tab, event) {
-      console.log(tab, event)
-    },
     removeTab (targetName) {
       let tabs = this.editableTabs2
       let activeName = this.editableTabsValue2

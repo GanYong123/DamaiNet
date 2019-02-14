@@ -136,8 +136,8 @@
         </div>
       </div>
       <div class="searchBox">
-        <input type="text" placeholder="请输入演出、艺人、场馆名称..." class="searchBar">
-        <div class="searchBtn">搜索</div>
+        <input @keyup="UpSearch($event)" type="text" placeholder="请输入演出、艺人、场馆名称..." class="searchBar">
+        <div @click="searchBtn" class="searchBtn">搜索</div>
       </div>
       <slot name="bread"></slot>
     </div>
@@ -158,6 +158,14 @@ export default {
     },
     mouseleave: function () {
       this.show = false
+    },
+    searchBtn () {
+      this.$router.push({path: '/screen'})
+    },
+    UpSearch (e) {
+      if (e.keyCode === 13) {
+        this.$router.push({path: '/screen'})
+      }
     }
   }
 }
