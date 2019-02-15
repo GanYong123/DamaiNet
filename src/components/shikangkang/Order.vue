@@ -20,7 +20,7 @@
         <h4>
           <span>选择付款方式</span>
         </h4>
-        <p @click="changeUrl">网上付款</p>
+        <p>网上付款</p>
       </div>
       <div class="commodity-list">
         <h4>
@@ -55,8 +55,10 @@
           <span>我要开发票</span>
         </h4>
         <ul>
-          <li class="active">公司</li>
-          <li>个人</li>
+          <li :class="{active: i===index}"
+          v-for ="(item,i) in tap"
+              @click="changed(i)"
+              :key="i">{{item}}</li>
         </ul>
         <form class="company">
           <label>
@@ -126,6 +128,17 @@ export default {
   name: 'Order',
   components: {
     Headers
+  },
+  data () {
+    return {
+      index: 0,
+      tap: ['公司', '个人']
+    }
+  },
+  methods: {
+    changed (i) {
+      this.index = i
+    }
   }
 }
 </script>
