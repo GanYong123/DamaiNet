@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import Lower from "./Lower";
+import Lower from './Lower'
 export default {
   name: 'Login',
   data () {

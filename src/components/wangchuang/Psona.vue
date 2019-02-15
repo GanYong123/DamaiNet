@@ -118,9 +118,9 @@
 </template>
 
 <script>
-import Headers from "../common/Header";
-import Foot from "../common/Footer";
-import Search from "../shenyintao/Search";
+import Headers from '../common/Header'
+import Foot from '../common/Footer'
+import Search from '../shenyintao/Search'
 export default {
   name: 'Person',
   data () {
