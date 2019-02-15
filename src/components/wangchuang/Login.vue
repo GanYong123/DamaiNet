@@ -23,7 +23,7 @@
           <!--登录-->
           <div class="sign">
             <div class="top">
-              <el-tabs v-model="activeName2" type="card" @tab-click="handleClick">
+              <el-tabs v-model="activeName2" type="card">
                 <el-tab-pane label="账户登录" name="first">
                   <div class="poae">
                     <form class="form">
@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import Lower from "./Lower";
+import Lower from './Lower'
 export default {
   name: 'Login',
   data () {
@@ -80,11 +80,6 @@ export default {
   },
   components: {
     Lower
-  },
-  methods: {
-    handleClick (tab, event) {
-      console.log(tab, event)
-    }
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <!-- 头部 -->
-    <Headers></Headers>
+    <Header></Header>
     <!-- 头部搜索 -->
     <Search></Search>
     <!-- 头部导航 -->
@@ -366,7 +366,7 @@
 </template>
 
 <script>
-import Headers from '../common/Header'
+import Header from '../common/Header'
 import Footer from '../common/Footer'
 import Search from '@/components/shenyintao/Search'
 import Swiper from '@/components/shenyintao/Swiper'
@@ -501,7 +501,7 @@ export default {
   },
   components: {
     // Search,
-    Headers, // 公共头部页面，个别页面不需要使用，所以这里当做组件引入。
+    Header, // 公共头部页面，个别页面不需要使用，所以这里当做组件引入。
     Footer, // 公共底部页面，个别页面不需要使用，所以这里当做组件引入。
     Search,
     Swiper
