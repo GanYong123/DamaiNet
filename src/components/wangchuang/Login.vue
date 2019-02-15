@@ -71,7 +71,7 @@
 </template>
 
 <script>
-import Lower from '@/components/wangchaung/Lower'
+import Lower from './Lower'
 export default {
   name: 'Login',
   data () {
