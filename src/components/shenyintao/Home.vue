@@ -32,15 +32,15 @@
                 <h2 class="title">{{item.smTitle}}</h2>
                 <p class="rt">></p>
                 <ul class="tlileList clear">
-                  <li v-for="(item, k) in Mores" :key="k">
+                  <router-link to="to" v-for="(item, k) in Mores" :key="k" tag="li">
                     <a href="#">{{item}}</a>
-                  </li>
+                  </router-link>
                 </ul>
                 <span class="close" @click="close()">X</span>
               </div>
               <h4 class="h4">相关热门</h4>
               <ul class="contCtList clear">
-                <li v-for="(item, a) in Conts" :key="a">
+                <router-link to="to" v-for="(item, a) in Conts" :key="a" tag="li">
                   <div class="picBox">
                     <img src="../../assets/img/sing3.jpg" alt="">
                     <div class="zzc">
@@ -50,7 +50,7 @@
                   </div>
                   <p><a href="#">{{item.contTitle}}</a></p>
                   <p>票价：<span>￥{{item.money}}</span></p>
-                </li>
+                </router-link>
               </ul>
             </div>
           </div>
@@ -69,7 +69,7 @@
         <el-tabs v-model="activeName">
           <el-tab-pane label="今日推荐" name="first">
             <ul class="cont1CtList clear">
-              <li v-for="(item, s) in spacilCont" :key="s" @click="Title()">
+              <li v-for="(item, s) in spacilCont" :key="s" @click="Title(s)">
                 <div class="picBox">
                   <img  src="../../assets/img/sing3.jpg" alt="">
                   <div class="zzc">
@@ -84,7 +84,7 @@
           </el-tab-pane>
           <el-tab-pane label="即将开售">
             <ul class="cont1CtList clear">
-              <li v-for="(item, d) in spacilCont1" :key="d">
+              <router-link to="to" v-for="(item, d) in spacilCont1" :key="d" tag="li">
                 <div class="picBox">
                   <img  src="../../assets/img/sing2.jpg" alt="">
                   <div class="zzc">
@@ -94,7 +94,7 @@
                 </div>
                 <p><a href="#">{{item.bgTitle}}</a></p>
                 <p>票价：<span>￥{{item.money}}</span></p>
-              </li>
+              </router-link>
             </ul>
           </el-tab-pane>
         </el-tabs>
@@ -120,7 +120,7 @@
             </div>
             <div class="listBox">
               <ul class="cont2Lists clear">
-                <li v-for="(item, idx) in dramasCont1" :key="idx">
+                <router-link to="to" v-for="(item, idx) in dramasCont1" :key="idx" tag="li">
                   <div class="cont2PicBox">
                     <img src="../../assets/img/sing7.jpg" alt="">
                   </div>
@@ -130,7 +130,7 @@
                     <p>{{item.city}}</p>
                     <p>¥&nbsp;{{item.money}}起</p>
                   </div>
-                </li>
+                </router-link>
               </ul>
             </div>
           </div>
@@ -142,12 +142,12 @@
               <a href="#">查看更多>></a>
             </h5>
             <ul class="paiHangList clear">
-              <li v-for="(item, i) in dramasCont2" :key="i">
+              <router-link to="to" v-for="(item, i) in dramasCont2" :key="i" tag="li">
                 <a href="#">
                   <span>{{item.Number}}</span>
                   {{item.lstTitle}}
                 </a>
-              </li>
+              </router-link>
             </ul>
           </div>
         </div>
@@ -172,7 +172,7 @@
             </div>
             <div class="listBox">
               <ul class="cont2Lists clear">
-                <li v-for="(item, i) in sportsCont1" :key="i">
+                <router-link to="to" v-for="(item, i) in sportsCont1" :key="i" tag="li">
                   <div class="cont2PicBox">
                     <img src="../../assets/img/sing7.jpg" alt="">
                   </div>
@@ -182,7 +182,7 @@
                     <p>{{item.city}}</p>
                     <p>¥&nbsp;{{item.money}}起</p>
                   </div>
-                </li>
+                </router-link>
               </ul>
             </div>
           </div>
@@ -194,12 +194,12 @@
               <a href="#">查看更多>></a>
             </h5>
             <ul class="paiHangList clear">
-              <li v-for="(item, j) in sportsCont2" :key="j">
+              <router-link to="to" v-for="(item, j) in sportsCont2" :key="j" tag="li">
                 <a href="#">
                   <span>{{item.Number}}</span>
                   {{item.lstTitle}}
                 </a>
-              </li>
+              </router-link>
             </ul>
           </div>
         </div>
@@ -224,7 +224,7 @@
             </div>
             <div class="listBox">
               <ul class="cont2Lists clear">
-                <li v-for="(item, i) in clssDceCont1" :key="i">
+                <router-link to="to" v-for="(item, i) in clssDceCont1" :key="i" tag="li">
                   <div class="cont2PicBox">
                     <img src="../../assets/img/sing7.jpg" alt="">
                   </div>
@@ -234,7 +234,7 @@
                     <p>{{item.city}}</p>
                     <p>¥&nbsp;{{item.money}}起</p>
                   </div>
-                </li>
+                </router-link>
               </ul>
             </div>
           </div>
@@ -246,12 +246,12 @@
               <a href="#">查看更多>></a>
             </h5>
             <ul class="paiHangList clear">
-              <li v-for="(item, j) in clssDceCont2" :key="j">
+              <router-link to="to" v-for="(item, j) in clssDceCont2" :key="j" tag="li">
                 <a href="#">
                   <span>{{item.Number}}</span>
                   {{item.lstTitle}}
                 </a>
-              </li>
+              </router-link>
             </ul>
           </div>
         </div>
@@ -276,7 +276,7 @@
             </div>
             <div class="listBox">
               <ul class="cont2Lists clear">
-                <li v-for="(item, i) in partCldCont1" :key="i">
+                <router-link to="to" v-for="(item, i) in partCldCont1" :key="i" tag="li">
                   <div class="cont2PicBox">
                     <img src="../../assets/img/sing7.jpg" alt="">
                   </div>
@@ -286,7 +286,7 @@
                     <p>{{item.city}}</p>
                     <p>¥&nbsp;{{item.money}}起</p>
                   </div>
-                </li>
+                </router-link>
               </ul>
             </div>
           </div>
@@ -298,12 +298,12 @@
               <a href="#">查看更多>></a>
             </h5>
             <ul class="paiHangList clear">
-              <li v-for="(item, j) in partCldCont2" :key="j">
+              <router-link to="to" v-for="(item, j) in partCldCont2" :key="j" tag="li">
                 <a href="#">
                   <span>{{item.Number}}</span>
                   {{item.lstTitle}}
                 </a>
-              </li>
+              </router-link>
             </ul>
           </div>
         </div>
@@ -328,7 +328,7 @@
             </div>
             <div class="listBox">
               <ul class="cont2Lists clear">
-                <li v-for="(item, i) in rockGoCont1" :key="i">
+                <router-link to="to" v-for="(item, i) in rockGoCont1" :key="i" tag="li">
                   <div class="cont2PicBox">
                     <img src="../../assets/img/sing7.jpg" alt="">
                   </div>
@@ -338,7 +338,7 @@
                     <p>{{item.city}}</p>
                     <p>¥&nbsp;{{item.money}}起</p>
                   </div>
-                </li>
+                </router-link>
               </ul>
             </div>
           </div>
@@ -350,12 +350,12 @@
               <a href="#">查看更多>></a>
             </h5>
             <ul class="paiHangList clear">
-              <li v-for="(item, j) in rockGoCont2" :key="j">
+              <router-link to="to" v-for="(item, j) in rockGoCont2" :key="j" tag="li">
                 <a href="#">
                   <span>{{item.Number}}</span>
                   {{item.lstTitle}}
                 </a>
-              </li>
+              </router-link>
             </ul>
           </div>
         </div>
@@ -481,13 +481,16 @@ export default {
         console.log(error)
       })
     },
-    Title () { // 跳转时将标题或者其他参数传递给详情页
+    Title (i) { // 跳转时将标题或者其他参数传递给详情页
+      console.log(this.homeSpacilData[0].contList[i].bgTitle)
       this.$router.push({
         name: 'Detail',
         params: {
-          titleData: this.homeSpacilData.bgTitle
+          titleData: this.homeSpacilData[0].contList[i].bgTitle
+          // titleData: this.homeSpacilData.ulList.bgTitle
         }
       })
+      this.$router.push({path: '/detail'})
     }
   },
   created () {
@@ -500,7 +503,6 @@ export default {
     this.rockGo()
   },
   components: {
-    // Search,
     Header, // 公共头部页面，个别页面不需要使用，所以这里当做组件引入。
     Footer, // 公共底部页面，个别页面不需要使用，所以这里当做组件引入。
     Search,
