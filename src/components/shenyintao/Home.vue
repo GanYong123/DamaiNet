@@ -1,8 +1,7 @@
 <template>
   <div id="home">
-    <Headers></Headers>
     <!-- 头部 -->
-    <!-- <Search></Search> -->
+    <Header></Header>
     <!-- 头部搜索 -->
     <Search></Search>
     <!-- 头部导航 -->
@@ -33,15 +32,15 @@
                 <h2 class="title">{{item.smTitle}}</h2>
                 <p class="rt">></p>
                 <ul class="tlileList clear">
-                  <li v-for="(item, k) in Mores" :key="k">
+                  <router-link to="to" v-for="(item, k) in Mores" :key="k" tag="li">
                     <a href="#">{{item}}</a>
-                  </li>
+                  </router-link>
                 </ul>
                 <span class="close" @click="close()">X</span>
               </div>
               <h4 class="h4">相关热门</h4>
               <ul class="contCtList clear">
-                <li v-for="(item, a) in Conts" :key="a">
+                <router-link to="to" v-for="(item, a) in Conts" :key="a" tag="li">
                   <div class="picBox">
                     <img src="../../assets/img/sing3.jpg" alt="">
                     <div class="zzc">
@@ -51,7 +50,7 @@
                   </div>
                   <p><a href="#">{{item.contTitle}}</a></p>
                   <p>票价：<span>￥{{item.money}}</span></p>
-                </li>
+                </router-link>
               </ul>
             </div>
           </div>
@@ -70,142 +69,32 @@
         <el-tabs v-model="activeName">
           <el-tab-pane label="今日推荐" name="first">
             <ul class="cont1CtList clear">
-              <li @click="Title()">
+              <li tag="li" v-for="(item, s) in spacilCont" :key="s" @click="Title(s)">
                 <div class="picBox">
                   <img  src="../../assets/img/sing3.jpg" alt="">
                   <div class="zzc">
-                    <p>我六断织身候山难社青众上入。</p>
-                    <p>2017.12.03 19:30</p>
+                    <p>{{item.zzcTitle}}</p>
+                    <p>{{item.zzcDate}}</p>
                   </div>
                 </div>
-                <p><a href="#">{{recommend}}</a></p>
-                <p>票价：<span>￥927</span></p>
-              </li>
-              <li>
-                <div class="picBox">
-                  <img  src="../../assets/img/sing3.jpg" alt="">
-                  <div class="zzc">
-                    <p>我六断织身候山难社青众上入。</p>
-                    <p>2017.12.03 19:30</p>
-                  </div>
-                </div>
-                <p><a href="#">11111111111111111111111111111111</a></p>
-                <p>票价：<span>￥927</span></p>
-              </li>
-              <li>
-                <div class="picBox">
-                  <img  src="../../assets/img/sing3.jpg" alt="">
-                  <div class="zzc">
-                    <p>我六断织身候山难社青众上入。</p>
-                    <p>2017.12.03 19:30</p>
-                  </div>
-                </div>
-                <p><a href="#">11111111111111111111111111111111</a></p>
-                <p>票价：<span>￥927</span></p>
-              </li>
-              <li>
-                <div class="picBox">
-                  <img  src="../../assets/img/sing3.jpg" alt="">
-                  <div class="zzc">
-                    <p>我六断织身候山难社青众上入。</p>
-                    <p>2017.12.03 19:30</p>
-                  </div>
-                </div>
-                <p><a href="#">11111111111111111111111111111111</a></p>
-                <p>票价：<span>￥927</span></p>
-              </li>
-              <li>
-                <div class="picBox">
-                  <img  src="../../assets/img/sing3.jpg" alt="">
-                  <div class="zzc">
-                    <p>我六断织身候山难社青众上入。</p>
-                    <p>2017.12.03 19:30</p>
-                  </div>
-                </div>
-                <p><a href="#">11111111111111111111111111111111</a></p>
-                <p>票价：<span>￥927</span></p>
-              </li>
-              <li>
-                <div class="picBox">
-                  <img  src="../../assets/img/sing3.jpg" alt="">
-                  <div class="zzc">
-                    <p>我六断织身候山难社青众上入。</p>
-                    <p>2017.12.03 19:30</p>
-                  </div>
-                </div>
-                <p><a href="#">11111111111111111111111111111111</a></p>
-                <p>票价：<span>￥927</span></p>
+                <p><a href="#">{{item.bgTitle}}</a></p>
+                <p>票价：<span>￥{{item.money}}</span></p>
               </li>
             </ul>
           </el-tab-pane>
-          <el-tab-pane label="即将开售" name="second">
+          <el-tab-pane label="即将开售">
             <ul class="cont1CtList clear">
-              <li>
+              <router-link to="to" v-for="(item, d) in spacilCont1" :key="d" tag="li">
                 <div class="picBox">
                   <img  src="../../assets/img/sing2.jpg" alt="">
                   <div class="zzc">
-                    <p>我六断织身候山难社青众上入。</p>
-                    <p>2017.12.03 19:30</p>
+                    <p>{{item.zzcTitle}}</p>
+                    <p>{{item.zzcDate}}</p>
                   </div>
                 </div>
-                <p><a href="#">11111111111111111111111111111111</a></p>
-                <p>票价：<span>￥927</span></p>
-              </li>
-              <li>
-                <div class="picBox">
-                  <img  src="../../assets/img/sing2.jpg" alt="">
-                  <div class="zzc">
-                    <p>我六断织身候山难社青众上入。</p>
-                    <p>2017.12.03 19:30</p>
-                  </div>
-                </div>
-                <p><a href="#">11111111111111111111111111111111</a></p>
-                <p>票价：<span>￥927</span></p>
-              </li>
-              <li>
-                <div class="picBox">
-                  <img  src="../../assets/img/sing2.jpg" alt="">
-                  <div class="zzc">
-                    <p>我六断织身候山难社青众上入。</p>
-                    <p>2017.12.03 19:30</p>
-                  </div>
-                </div>
-                <p><a href="#">11111111111111111111111111111111</a></p>
-                <p>票价：<span>￥927</span></p>
-              </li>
-              <li>
-                <div class="picBox">
-                  <img  src="../../assets/img/sing2.jpg" alt="">
-                  <div class="zzc">
-                    <p>我六断织身候山难社青众上入。</p>
-                    <p>2017.12.03 19:30</p>
-                  </div>
-                </div>
-                <p><a href="#">11111111111111111111111111111111</a></p>
-                <p>票价：<span>￥927</span></p>
-              </li>
-              <li>
-                <div class="picBox">
-                  <img  src="../../assets/img/sing2.jpg" alt="">
-                  <div class="zzc">
-                    <p>我六断织身候山难社青众上入。</p>
-                    <p>2017.12.03 19:30</p>
-                  </div>
-                </div>
-                <p><a href="#">11111111111111111111111111111111</a></p>
-                <p>票价：<span>￥927</span></p>
-              </li>
-              <li>
-                <div class="picBox">
-                  <img  src="../../assets/img/sing2.jpg" alt="">
-                  <div class="zzc">
-                    <p>我六断织身候山难社青众上入。</p>
-                    <p>2017.12.03 19:30</p>
-                  </div>
-                </div>
-                <p><a href="#">11111111111111111111111111111111</a></p>
-                <p>票价：<span>￥927</span></p>
-              </li>
+                <p><a href="#">{{item.bgTitle}}</a></p>
+                <p>票价：<span>￥{{item.money}}</span></p>
+              </router-link>
             </ul>
           </el-tab-pane>
         </el-tabs>
@@ -222,59 +111,26 @@
               <img src="../../assets/img/sing6.jpg">
               <div class="zzcBox">
                 <p>
-                  我六断织身候山难社青众我六断织身候山难社青众上。
+                  {{dramasCont.zzcTitle}}
                 </p>
                 <p>
-                  369元
+                  {{dramasCont.money}}元
                 </p>
               </div>
             </div>
             <div class="listBox">
               <ul class="cont2Lists clear">
-                <li>
+                <router-link to="to" v-for="(item, idx) in dramasCont1" :key="idx" tag="li">
                   <div class="cont2PicBox">
                     <img src="../../assets/img/sing7.jpg" alt="">
                   </div>
                   <div class="cont2Cont">
-                    <h4 class="h4">记口程数给万石我单别积外育验基得却革。</h4>
-                    <p>2008-05-16-1999-02-14</p>
-                    <p>山西省&nbsp;朔州市</p>
-                    <p>¥&nbsp;701起</p>
+                    <h4 class="h4">{{item.lstTitle}}</h4>
+                    <p>{{item.lstDate}}</p>
+                    <p>{{item.city}}</p>
+                    <p>¥&nbsp;{{item.money}}起</p>
                   </div>
-                </li>
-                <li>
-                  <div class="cont2PicBox">
-                    <img src="../../assets/img/sing7.jpg" alt="">
-                  </div>
-                  <div class="cont2Cont">
-                    <h4 class="h4">记口程数给万石我单别积外育验基得却革。</h4>
-                    <p>2008-05-16-1999-02-14</p>
-                    <p>山西省&nbsp;朔州市</p>
-                    <p>¥&nbsp;701起</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="cont2PicBox">
-                    <img src="../../assets/img/sing7.jpg" alt="">
-                  </div>
-                  <div class="cont2Cont">
-                    <h4 class="h4">记口程数给万石我单别积外育验基得却革。</h4>
-                    <p>2008-05-16-1999-02-14</p>
-                    <p>山西省&nbsp;朔州市</p>
-                    <p>¥&nbsp;701起</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="cont2PicBox">
-                    <img src="../../assets/img/sing7.jpg" alt="">
-                  </div>
-                  <div class="cont2Cont">
-                    <h4 class="h4">记口程数给万石我单别积外育验基得却革。</h4>
-                    <p>2008-05-16-1999-02-14</p>
-                    <p>山西省&nbsp;朔州市</p>
-                    <p>¥&nbsp;701起</p>
-                  </div>
-                </li>
+                </router-link>
               </ul>
             </div>
           </div>
@@ -286,66 +142,12 @@
               <a href="#">查看更多>></a>
             </h5>
             <ul class="paiHangList clear">
-              <li>
+              <router-link to="to" v-for="(item, i) in dramasCont2" :key="i" tag="li">
                 <a href="#">
-                  <span>1</span>
-                  油严个江于业后即速或加去实步。
+                  <span>{{item.Number}}</span>
+                  {{item.lstTitle}}
                 </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>2</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>3</span>
-                  易小许些色度没较价维四被派共水安使细。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>4</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>5</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>6</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>7</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>8</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>9</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>10</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
+              </router-link>
             </ul>
           </div>
         </div>
@@ -361,59 +163,26 @@
               <img src="../../assets/img/sing6.jpg">
               <div class="zzcBox">
                 <p>
-                  我六断织身候山难社青众我六断织身候山难社青众上。
+                  {{sportsCont.zzcTitle}}
                 </p>
                 <p>
-                  369元
+                  {{sportsCont.money}}元
                 </p>
               </div>
             </div>
             <div class="listBox">
               <ul class="cont2Lists clear">
-                <li>
+                <router-link to="to" v-for="(item, i) in sportsCont1" :key="i" tag="li">
                   <div class="cont2PicBox">
                     <img src="../../assets/img/sing7.jpg" alt="">
                   </div>
                   <div class="cont2Cont">
-                    <h4 class="h4">记口程数给万石我单别积外育验基得却革。</h4>
-                    <p>2008-05-16-1999-02-14</p>
-                    <p>山西省&nbsp;朔州市</p>
-                    <p>¥&nbsp;701起</p>
+                    <h4 class="h4">{{item.lstTitle}}</h4>
+                    <p>{{item.lstDate}}</p>
+                    <p>{{item.city}}</p>
+                    <p>¥&nbsp;{{item.money}}起</p>
                   </div>
-                </li>
-                <li>
-                  <div class="cont2PicBox">
-                    <img src="../../assets/img/sing7.jpg" alt="">
-                  </div>
-                  <div class="cont2Cont">
-                    <h4 class="h4">记口程数给万石我单别积外育验基得却革。</h4>
-                    <p>2008-05-16-1999-02-14</p>
-                    <p>山西省&nbsp;朔州市</p>
-                    <p>¥&nbsp;701起</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="cont2PicBox">
-                    <img src="../../assets/img/sing7.jpg" alt="">
-                  </div>
-                  <div class="cont2Cont">
-                    <h4 class="h4">记口程数给万石我单别积外育验基得却革。</h4>
-                    <p>2008-05-16-1999-02-14</p>
-                    <p>山西省&nbsp;朔州市</p>
-                    <p>¥&nbsp;701起</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="cont2PicBox">
-                    <img src="../../assets/img/sing7.jpg" alt="">
-                  </div>
-                  <div class="cont2Cont">
-                    <h4 class="h4">记口程数给万石我单别积外育验基得却革。</h4>
-                    <p>2008-05-16-1999-02-14</p>
-                    <p>山西省&nbsp;朔州市</p>
-                    <p>¥&nbsp;701起</p>
-                  </div>
-                </li>
+                </router-link>
               </ul>
             </div>
           </div>
@@ -425,66 +194,12 @@
               <a href="#">查看更多>></a>
             </h5>
             <ul class="paiHangList clear">
-              <li>
+              <router-link to="to" v-for="(item, j) in sportsCont2" :key="j" tag="li">
                 <a href="#">
-                  <span>1</span>
-                  油严个江于业后即速或加去实步。
+                  <span>{{item.Number}}</span>
+                  {{item.lstTitle}}
                 </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>2</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>3</span>
-                  易小许些色度没较价维四被派共水安使细。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>4</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>5</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>6</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>7</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>8</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>9</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>10</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
+              </router-link>
             </ul>
           </div>
         </div>
@@ -500,59 +215,26 @@
               <img src="../../assets/img/sing6.jpg">
               <div class="zzcBox">
                 <p>
-                  我六断织身候山难社青众我六断织身候山难社青众上。
+                  {{clssDceCont.zzcTitle}}
                 </p>
                 <p>
-                  369元
+                  {{clssDceCont.money}}元
                 </p>
               </div>
             </div>
             <div class="listBox">
               <ul class="cont2Lists clear">
-                <li>
+                <router-link to="to" v-for="(item, i) in clssDceCont1" :key="i" tag="li">
                   <div class="cont2PicBox">
                     <img src="../../assets/img/sing7.jpg" alt="">
                   </div>
                   <div class="cont2Cont">
-                    <h4 class="h4">记口程数给万石我单别积外育验基得却革。</h4>
-                    <p>2008-05-16-1999-02-14</p>
-                    <p>山西省&nbsp;朔州市</p>
-                    <p>¥&nbsp;701起</p>
+                    <h4 class="h4">{{item.lstTitle}}</h4>
+                    <p>{{item.lstDate}}</p>
+                    <p>{{item.city}}</p>
+                    <p>¥&nbsp;{{item.money}}起</p>
                   </div>
-                </li>
-                <li>
-                  <div class="cont2PicBox">
-                    <img src="../../assets/img/sing7.jpg" alt="">
-                  </div>
-                  <div class="cont2Cont">
-                    <h4 class="h4">记口程数给万石我单别积外育验基得却革。</h4>
-                    <p>2008-05-16-1999-02-14</p>
-                    <p>山西省&nbsp;朔州市</p>
-                    <p>¥&nbsp;701起</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="cont2PicBox">
-                    <img src="../../assets/img/sing7.jpg" alt="">
-                  </div>
-                  <div class="cont2Cont">
-                    <h4 class="h4">记口程数给万石我单别积外育验基得却革。</h4>
-                    <p>2008-05-16-1999-02-14</p>
-                    <p>山西省&nbsp;朔州市</p>
-                    <p>¥&nbsp;701起</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="cont2PicBox">
-                    <img src="../../assets/img/sing7.jpg" alt="">
-                  </div>
-                  <div class="cont2Cont">
-                    <h4 class="h4">记口程数给万石我单别积外育验基得却革。</h4>
-                    <p>2008-05-16-1999-02-14</p>
-                    <p>山西省&nbsp;朔州市</p>
-                    <p>¥&nbsp;701起</p>
-                  </div>
-                </li>
+                </router-link>
               </ul>
             </div>
           </div>
@@ -564,66 +246,12 @@
               <a href="#">查看更多>></a>
             </h5>
             <ul class="paiHangList clear">
-              <li>
+              <router-link to="to" v-for="(item, j) in clssDceCont2" :key="j" tag="li">
                 <a href="#">
-                  <span>1</span>
-                  油严个江于业后即速或加去实步。
+                  <span>{{item.Number}}</span>
+                  {{item.lstTitle}}
                 </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>2</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>3</span>
-                  易小许些色度没较价维四被派共水安使细。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>4</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>5</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>6</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>7</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>8</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>9</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>10</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
+              </router-link>
             </ul>
           </div>
         </div>
@@ -639,59 +267,26 @@
               <img src="../../assets/img/sing6.jpg">
               <div class="zzcBox">
                 <p>
-                  我六断织身候山难社青众我六断织身候山难社青众上。
+                  {{partCldCont.zzcTitle}}
                 </p>
                 <p>
-                  369元
+                  {{partCldCont.money}}元
                 </p>
               </div>
             </div>
             <div class="listBox">
               <ul class="cont2Lists clear">
-                <li>
+                <router-link to="to" v-for="(item, i) in partCldCont1" :key="i" tag="li">
                   <div class="cont2PicBox">
                     <img src="../../assets/img/sing7.jpg" alt="">
                   </div>
                   <div class="cont2Cont">
-                    <h4 class="h4">记口程数给万石我单别积外育验基得却革。</h4>
-                    <p>2008-05-16-1999-02-14</p>
-                    <p>山西省&nbsp;朔州市</p>
-                    <p>¥&nbsp;701起</p>
+                    <h4 class="h4">{{item.lstTitle}}</h4>
+                    <p>{{item.lstDate}}</p>
+                    <p>{{item.city}}</p>
+                    <p>¥&nbsp;{{item.money}}起</p>
                   </div>
-                </li>
-                <li>
-                  <div class="cont2PicBox">
-                    <img src="../../assets/img/sing7.jpg" alt="">
-                  </div>
-                  <div class="cont2Cont">
-                    <h4 class="h4">记口程数给万石我单别积外育验基得却革。</h4>
-                    <p>2008-05-16-1999-02-14</p>
-                    <p>山西省&nbsp;朔州市</p>
-                    <p>¥&nbsp;701起</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="cont2PicBox">
-                    <img src="../../assets/img/sing7.jpg" alt="">
-                  </div>
-                  <div class="cont2Cont">
-                    <h4 class="h4">记口程数给万石我单别积外育验基得却革。</h4>
-                    <p>2008-05-16-1999-02-14</p>
-                    <p>山西省&nbsp;朔州市</p>
-                    <p>¥&nbsp;701起</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="cont2PicBox">
-                    <img src="../../assets/img/sing7.jpg" alt="">
-                  </div>
-                  <div class="cont2Cont">
-                    <h4 class="h4">记口程数给万石我单别积外育验基得却革。</h4>
-                    <p>2008-05-16-1999-02-14</p>
-                    <p>山西省&nbsp;朔州市</p>
-                    <p>¥&nbsp;701起</p>
-                  </div>
-                </li>
+                </router-link>
               </ul>
             </div>
           </div>
@@ -703,66 +298,12 @@
               <a href="#">查看更多>></a>
             </h5>
             <ul class="paiHangList clear">
-              <li>
+              <router-link to="to" v-for="(item, j) in partCldCont2" :key="j" tag="li">
                 <a href="#">
-                  <span>1</span>
-                  油严个江于业后即速或加去实步。
+                  <span>{{item.Number}}</span>
+                  {{item.lstTitle}}
                 </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>2</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>3</span>
-                  易小许些色度没较价维四被派共水安使细。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>4</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>5</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>6</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>7</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>8</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>9</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>10</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
+              </router-link>
             </ul>
           </div>
         </div>
@@ -778,59 +319,26 @@
               <img src="../../assets/img/sing6.jpg">
               <div class="zzcBox">
                 <p>
-                  我六断织身候山难社青众我六断织身候山难社青众上。
+                  {{rockGoCont.zzcTitle}}
                 </p>
                 <p>
-                  369元
+                  {{rockGoCont.money}}元
                 </p>
               </div>
             </div>
             <div class="listBox">
               <ul class="cont2Lists clear">
-                <li>
+                <router-link to="to" v-for="(item, i) in rockGoCont1" :key="i" tag="li">
                   <div class="cont2PicBox">
                     <img src="../../assets/img/sing7.jpg" alt="">
                   </div>
                   <div class="cont2Cont">
-                    <h4 class="h4">记口程数给万石我单别积外育验基得却革。</h4>
-                    <p>2008-05-16-1999-02-14</p>
-                    <p>山西省&nbsp;朔州市</p>
-                    <p>¥&nbsp;701起</p>
+                    <h4 class="h4">{{item.lstTitle}}</h4>
+                    <p>{{item.lstDate}}</p>
+                    <p>{{item.city}}</p>
+                    <p>¥&nbsp;{{item.money}}起</p>
                   </div>
-                </li>
-                <li>
-                  <div class="cont2PicBox">
-                    <img src="../../assets/img/sing7.jpg" alt="">
-                  </div>
-                  <div class="cont2Cont">
-                    <h4 class="h4">记口程数给万石我单别积外育验基得却革。</h4>
-                    <p>2008-05-16-1999-02-14</p>
-                    <p>山西省&nbsp;朔州市</p>
-                    <p>¥&nbsp;701起</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="cont2PicBox">
-                    <img src="../../assets/img/sing7.jpg" alt="">
-                  </div>
-                  <div class="cont2Cont">
-                    <h4 class="h4">记口程数给万石我单别积外育验基得却革。</h4>
-                    <p>2008-05-16-1999-02-14</p>
-                    <p>山西省&nbsp;朔州市</p>
-                    <p>¥&nbsp;701起</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="cont2PicBox">
-                    <img src="../../assets/img/sing7.jpg" alt="">
-                  </div>
-                  <div class="cont2Cont">
-                    <h4 class="h4">记口程数给万石我单别积外育验基得却革。</h4>
-                    <p>2008-05-16-1999-02-14</p>
-                    <p>山西省&nbsp;朔州市</p>
-                    <p>¥&nbsp;701起</p>
-                  </div>
-                </li>
+                </router-link>
               </ul>
             </div>
           </div>
@@ -842,66 +350,12 @@
               <a href="#">查看更多>></a>
             </h5>
             <ul class="paiHangList clear">
-              <li>
+              <router-link to="to" v-for="(item, j) in rockGoCont2" :key="j" tag="li">
                 <a href="#">
-                  <span>1</span>
-                  油严个江于业后即速或加去实步。
+                  <span>{{item.Number}}</span>
+                  {{item.lstTitle}}
                 </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>2</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>3</span>
-                  易小许些色度没较价维四被派共水安使细。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>4</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>5</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>6</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>7</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>8</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>9</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>10</span>
-                  增美造治际回算别识家说流史党务开。
-                </a>
-              </li>
+              </router-link>
             </ul>
           </div>
         </div>
@@ -912,8 +366,8 @@
 </template>
 
 <script>
-import Headers from '../common/Header'
-import Footer from '../common/Footer'
+import Header from '@/components/common/Header'
+import Footer from '@/components/common/Footer'
 import Search from '@/components/shenyintao/Search'
 import Swiper from '@/components/shenyintao/Swiper'
 export default {
@@ -924,29 +378,36 @@ export default {
       contData: [],
       Mores: [],
       Conts: [],
+      homeSpacilData: [],
+      spacilCont: [],
+      spacilCont1: [],
+      dramasCont: [],
+      dramasCont1: [],
+      dramasCont2: [],
+      sportsData: [],
+      sportsCont: [],
+      sportsCont1: [],
+      sportsCont2: [],
+      clssDceData: [],
+      clssDceCont: [],
+      clssDceCont1: [],
+      clssDceCont2: [],
+      partCldData: [],
+      partCldCont: [],
+      partCldCont1: [],
+      partCldCont2: [],
+      rockGoData: [],
+      rockGoCont: [],
+      rockGoCont1: [],
+      rockGoCont2: [],
       show: false,
       index: 0,
       activeName: 'first',
-      recommend: '这里只是一个暂时性的标题文字数据'
+      dateilData: '',
+      homeTop: 0
     }
   },
   methods: {
-    removeTab (targetName) {
-      let tabs = this.editableTabs2
-      let activeName = this.editableTabsValue2
-      if (activeName === targetName) {
-        tabs.forEach((tab, index) => {
-          if (tab.name === targetName) {
-            let nextTab = tabs[index + 1] || tabs[index - 1]
-            if (nextTab) {
-              activeName = nextTab.name
-            }
-          }
-        })
-      }
-      this.editableTabsValue2 = activeName
-      this.editableTabs2 = tabs.filter(tab => tab.name !== targetName)
-    },
     open (i) {
       this.index = i
       this.Mores = this.userData[this.index].More // 单独请求More的数据
@@ -963,21 +424,97 @@ export default {
         console.log(error)
       })
     },
-    Title () { // 跳转时将标题或者其他参数传递给详情页
+    getHomeSpacil () {
+      this.$http.get(this.$url + 'homeSpecial').then((res) => {
+        this.homeSpacilData = res.data.homeSpecial
+        this.spacilCont = this.homeSpacilData[0].contList
+        this.spacilCont1 = this.homeSpacilData[1].contList
+      }).catch((error) => {
+        console.log(error)
+      })
+    },
+    dramas () {
+      this.$http.get(this.$url + 'dramas').then((res) => {
+        this.dramasData = res.data.dramas
+        this.dramasCont = this.dramasData[0]
+        this.dramasCont1 = this.dramasData[1].ulList
+        this.dramasCont2 = this.dramasData[2].ulList
+      }).catch((error) => {
+        console.log(error)
+      })
+    },
+    sportsEvents () {
+      this.$http.get(this.$url + 'sportsEvents').then((res) => {
+        this.sportsData = res.data.sportsEvents
+        this.sportsCont = this.sportsData[0]
+        this.sportsCont1 = this.sportsData[1].ulList
+        this.sportsCont2 = this.sportsData[2].ulList
+      }).catch((error) => {
+        console.log(error)
+      })
+    },
+    classicalDance () {
+      this.$http.get(this.$url + 'classicalDance').then((res) => {
+        this.clssDceData = res.data.classicalDance
+        this.clssDceCont = this.clssDceData[0]
+        this.clssDceCont1 = this.clssDceData[1].ulList
+        this.clssDceCont2 = this.clssDceData[2].ulList
+      }).catch((error) => {
+        console.log(error)
+      })
+    },
+    parentChild () {
+      this.$http.get(this.$url + 'parentChild').then((res) => {
+        this.partCldData = res.data.parentChild
+        this.partCldCont = this.partCldData[0]
+        this.partCldCont1 = this.partCldData[1].ulList
+        this.partCldCont2 = this.partCldData[2].ulList
+      }).catch((error) => {
+        console.log(error)
+      })
+    },
+    rockGo () {
+      this.$http.get(this.$url + 'rockGo').then((res) => {
+        this.rockGoData = res.data.rockGo
+        this.rockGoCont = this.rockGoData[0]
+        this.rockGoCont1 = this.rockGoData[1].ulList
+        this.rockGoCont2 = this.rockGoData[2].ulList
+      }).catch((error) => {
+        console.log(error)
+      })
+    },
+    Title (i) { // 跳转时将标题或者其他参数传递给详情页
+      this.dateilData = this.homeSpacilData[0].contList[i].bgTitle
       this.$router.push({
         name: 'Detail',
         params: {
-          titleData: this.recommend
+          titleData: this.dateilData
         }
       })
     }
   },
   created () {
     this.getList()
+    this.getHomeSpacil()
+    this.dramas()
+    this.sportsEvents()
+    this.classicalDance()
+    this.parentChild()
+    this.rockGo()
+  },
+  // activated/beforeRouteLeave未写完，勿删
+  activated () {
+    document.getElementById('app').scrollTop = this.homeTop || 0
+  },
+  beforeRouteLeave (to, from, next) {
+    // console.log('leave')
+    let app = document.getElementById('app')
+    this.homeTop = app.scrollTop || 0
+    console.log(this.homeTop)
+    next()
   },
   components: {
-    // Search,
-    Headers, // 公共头部页面，个别页面不需要使用，所以这里当做组件引入。
+    Header, // 公共头部页面，个别页面不需要使用，所以这里当做组件引入。
     Footer, // 公共底部页面，个别页面不需要使用，所以这里当做组件引入。
     Search,
     Swiper
@@ -1527,6 +1064,9 @@ export default {
               }
             }
           }
+        }
+        &:last-of-type{
+          margin-bottom: 30px;
         }
       }
     }

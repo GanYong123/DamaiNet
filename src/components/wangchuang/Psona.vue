@@ -118,9 +118,9 @@
 </template>
 
 <script>
-import Headers from '../common/Header'
-import Foot from '../common/Footer'
-import Search from '../shenyintao/Search'
+import Headers from '@/components/common/Header'
+import Foot from '@/components/common/Footer'
+import Search from '@/components/shenyintao/Search'
 export default {
   name: 'Person',
   data () {
@@ -296,13 +296,13 @@ export default {
 }
 .main .pead .tap .lpni .poaw span{
   float: left;
-  padding-right: 5px;
+  padding-right: 2px;
   height: 33px;
-  margin-left: 10px;
+  margin-left: 13px;
   line-height: 33px;
 }
 .main .pead .tap .lpni .sex{
-  margin-left: 33px;
+  margin-left: 37px;
 }
 .main .pead .tap .lpni .sex .el-radio{
   margin-left: 18px;

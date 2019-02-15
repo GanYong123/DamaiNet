@@ -59,7 +59,7 @@ export default new Router({
       component: Screen
     },
     {
-      path: '/detail', // 详情页
+      path: '/detail/:titleData', // 详情页
       name: 'Detail',
       component: Detail
     },

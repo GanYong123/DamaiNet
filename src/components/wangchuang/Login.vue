@@ -23,25 +23,26 @@
           <!--登录-->
           <div class="sign">
             <div class="top">
-              <el-tabs v-model="activeName2" type="card" @tab-click="handleClick">
+              <el-tabs v-model="activeName2" type="card">
                 <el-tab-pane label="账户登录" name="first">
                   <div class="poae">
-                    <form class="form">
+                    <form class="form" action="">
                       <div class="tel">
                         <div class="pic-log">
-                          <i>你</i>
+                          <i>图</i>
                         </div>
-                        <input class="name" type="text" placeholder="请输入手机号码"/>
-                        <span id="labe" style="display: none;">输入错误，请输入11位手机号</span>
+                        <input id="name" type="text" placeholder="请输入手机号码"/>
+                        <!--<span id="labe" style="display: none;">输入错误，请输入11位手机号</span>-->
                       </div>
                       <div class="pass">
                         <div class="pic-log">
-                          <i>好</i>
+                          <i>片</i>
                         </div>
                         <input type="password" placeholder="请输入登录密码"/>
+                        <!--<span id="pass" style="display: none;">输入错误，请输入6-12位</span>-->
                       </div>
                       <div class="sig-login">
-                        <button type="submit" class="pass-login">登录</button>
+                        <button type="submit" class="pass-login" @click="passlog">登录</button>
                       </div>
                       <div id="form-botton">
                         <div class="bot-left">
@@ -53,7 +54,7 @@
                         </div>
                       </div>
                       <div class="posl">
-                        <p>其他登录:<i>弄</i></p>
+                        <p>其他登录:<i>图</i></p>
                       </div>
                     </form>
                   </div>
@@ -80,11 +81,6 @@ export default {
   },
   components: {
     Lower
-  },
-  methods: {
-    handleClick (tab, event) {
-      console.log(tab, event)
-    }
   }
 }
 </script>
