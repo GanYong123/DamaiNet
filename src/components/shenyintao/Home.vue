@@ -366,8 +366,8 @@
 </template>
 
 <script>
-import Header from '../common/Header'
-import Footer from '../common/Footer'
+import Header from '@/components/common/Header'
+import Footer from '@/components/common/Footer'
 import Search from '@/components/shenyintao/Search'
 import Swiper from '@/components/shenyintao/Swiper'
 export default {
