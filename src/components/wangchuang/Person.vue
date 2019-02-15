@@ -155,9 +155,9 @@
 </template>
 
 <script>
-import Headers from '../common/Header'
-import Foot from '../common/Footer'
-import Search from '../shenyintao/Search'
+import Headers from '@/components/common/Header'
+import Foot from '@/components/common/Footer'
+import Search from '@/components/shenyintao/Search'
 export default {
   name: 'Person',
   data () {
