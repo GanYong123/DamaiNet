@@ -14,6 +14,7 @@ import Person from '@/components/wangchuang/Person'
 import Inform from '@/components/wangchuang/Inform'
 import Psona from '@/components/wangchuang/Psona'
 import Order from '@/components/shikangkang/Order'
+import Payment from '@/components/shikangkang/Payment'
 Vue.use(Router)
 
 export default new Router({
@@ -59,7 +60,7 @@ export default new Router({
       component: Screen
     },
     {
-      path: '/detail/:titleData', // 详情页
+      path: '/detail', // 详情页
       name: 'Detail',
       component: Detail
     },
@@ -92,6 +93,11 @@ export default new Router({
       path: '/choose-seat',
       name: 'Order',
       component: Order
+    },
+    {
+      path: '/payment',
+      name: 'Payment',
+      component: Payment
     }
   ]
 })
