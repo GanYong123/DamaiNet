@@ -69,7 +69,7 @@
         <el-tabs v-model="activeName">
           <el-tab-pane label="今日推荐" name="first">
             <ul class="cont1CtList clear">
-              <li tag="li" v-for="(item, s) in spacilCont" :key="s" @click="Title(s)">
+              <li v-for="(item, i) in spacilCont" :key="i" @click="Title(i)">
                 <div class="picBox">
                   <img  src="../../assets/img/sing3.jpg" alt="">
                   <div class="zzc">
@@ -84,7 +84,7 @@
           </el-tab-pane>
           <el-tab-pane label="即将开售">
             <ul class="cont1CtList clear">
-              <router-link to="to" v-for="(item, d) in spacilCont1" :key="d" tag="li">
+              <li v-for="(item, d) in spacilCont1" :key="d">
                 <div class="picBox">
                   <img  src="../../assets/img/sing2.jpg" alt="">
                   <div class="zzc">
@@ -94,7 +94,7 @@
                 </div>
                 <p><a href="#">{{item.bgTitle}}</a></p>
                 <p>票价：<span>￥{{item.money}}</span></p>
-              </router-link>
+              </li>
             </ul>
           </el-tab-pane>
         </el-tabs>
