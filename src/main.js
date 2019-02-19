@@ -15,7 +15,6 @@ Vue.use(VueLazyload)
 Vue.prototype.$http = axios // 挂载到Vue原型上
 Vue.prototype.$url = 'https://www.easy-mock.com/mock/5c42c815fa4bae6ac3633357/DamaiNet/'
 Vue.config.productionTip = false
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -24,4 +23,8 @@ new Vue({
   components: { App },
   template: '<App/>',
   render: h => h(App) // ElementUI注册
+})
+/* 配合vue-router跳转时滚动条自动回到顶部，如需要纪录滚动条位置或者使用锚点请重写此方法 */
+router.afterEach((to, from, next) => {
+  window.scrollTo(0, 0)
 })

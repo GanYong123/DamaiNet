@@ -3,7 +3,12 @@
     <Headers></Headers>
     <Search></Search>
     <div class="crumbs">
-      <a>大麦</a>><a>北京</a>><a>电影</a>><a>{{Title}}</a>
+      <el-breadcrumb separator-class="el-icon-arrow-right">
+        <el-breadcrumb-item :to="{ path: '/' }">大麦</el-breadcrumb-item>
+        <el-breadcrumb-item>北京</el-breadcrumb-item>
+        <el-breadcrumb-item>电影</el-breadcrumb-item>
+        <el-breadcrumb-item>{{Title}}</el-breadcrumb-item>
+      </el-breadcrumb>
     </div>
     <div class="tickets">
       <img src="../../assets/img/detailsPic1.jpg" alt="图片">
@@ -79,156 +84,185 @@
           <li @click="magBtn(3)" :class="{'active':msgTab === 3}">购买方式</li>
           <li ref="bar" class="bar"></li>
         </ul>
-        <div v-show="msgTab === 0" class="message-cont showMsg">
-          <div class="basic">
-            <h5><span>基本信息</span><i></i></h5>
-          </div>
-          <div  class="table-box">
-            <table cellspacing="0" border="1">
-              <tr>
-                <th>演出时间</th>
-                <td>2018-01-04-01-06</td>
-                <th>演出场馆</th>
-                <td>光顾路5号国际会展中心</td>
-              </tr>
-              <tr>
-                <th>演出时间</th>
-                <td>2018-01-04-01-06</td>
-                <th>演出场馆</th>
-                <td>
-                  <p>光顾路5号国际会展中心</p>
-                  <p>光顾路5号国际会展中心</p>
-                  <p>光顾路5号国际会展中心</p>
-                  <p>光顾路5号国际会展中心</p>
-                  <p>光顾路5号国际会展中心</p>
-                  <p>光顾路5号国际会展中心</p>
-                </td>
-              </tr>
-            </table>
-          </div>
-          <div class="basic">
-            <h5><span>项目介绍</span><i></i></h5>
-          </div>
-          <div class="introduce">
-            <h5>英文站入口</h5>
-            <p>英文站购买链接：<a href="www.baidu.com">www.baidu.com</a></p>
-            <h5>演出介绍</h5>
-            <p>
-              世艇典原茧窖乐剧衝<br/>
-              猫的足迹<br/>
-              超过20#语言_ 30个国家，300座城市，7300万观众超过20沖语言，30个国家，300座域市■ 7300万观众星过20种语言■ 3阶国冡，300座 城市，7300万观众星过20种语言，30^国冡，300座域市，7300万观众超过20#^言，30个国家，300座城市，7300万观众超过20?1晤言， 国家■ 300座域市■ 7300万观众超过20#^言，30个国家，300座城市，7300万观众 網7座托尼奖，莫获翻弗奖、格菜美奖等全球主要奖项<br/>
-              伦麵区百老汇有史贼狐连续公演最久的音乐剧之一
-            </p>
-            <img src="../../assets/img/detailsPic1.jpg" alt="图片">
-            <p>
-              伦麵区百老汇有史贼狐连续公演最久的音乐剧之一<br/>
-              伦麵区百老汇有史贼狐连续公演最久的音乐剧之一<br/>
-              伦麵区百老汇有史贼狐连续公演最久的音乐剧之一<br/>
-            </p>
-          </div>
-          <div class="basic">
-            <h5><span>写剧评&nbsp;&nbsp;&nbsp;&nbsp;</span><i></i></h5>
-          </div>
-          <div class="grade">
-            <div class="grade-wind">
-              <div class="star">
-                打个分吧：<el-rate text-color="#ff3c1b" :colors="['#ff3c1b', '#ff3c1b', '#ff3c1b']" void-color="#999999" @change="getGrade" v-model="value3" :disabled="false" show-score allow-half></el-rate>
-              </div>
-              <textarea ref="TextwindOne" maxlength="10000" placeholder="写个评价吧，10-10000字"></textarea>
-              <el-button class="grade-btn" :plain="true" @click="Grade">评价</el-button>
+        <transition name="el-zoom-in-center">
+          <div v-show="msgTab === 0" class="message-cont showMsg">
+            <div class="basic">
+              <h5><span>基本信息</span><i></i></h5>
             </div>
-          </div>
-        </div>
-        <div v-show="msgTab === 1" class="message-cont showMsg">
-          <div class="basic">
-            <h5><span>写剧评&nbsp;&nbsp;&nbsp;&nbsp;</span><i></i></h5>
-          </div>
-          <div class="grade">
-            <div class="grade-wind">
-              <div class="star">
-                打个分吧：<el-rate text-color="#ff3c1b" :colors="['#ff3c1b', '#ff3c1b', '#ff3c1b']" void-color="#999999" @change="getGrade" v-model="value3" :disabled="false" show-score allow-half></el-rate>
-              </div>
-              <textarea ref="Textwind" maxlength="10000" placeholder="写个评价吧，10-10000字"></textarea>
-              <el-button class="grade-btn" :plain="true" @click="Grade">评价</el-button>
+            <div  class="table-box">
+              <table cellspacing="0" border="1">
+                <tr>
+                  <th>演出时间</th>
+                  <td>2018-01-04-01-06</td>
+                  <th>演出场馆</th>
+                  <td>光顾路5号国际会展中心</td>
+                </tr>
+                <tr>
+                  <th>演出时间</th>
+                  <td>2018-01-04-01-06</td>
+                  <th>演出场馆</th>
+                  <td>
+                    <p>光顾路5号国际会展中心</p>
+                    <p>光顾路5号国际会展中心</p>
+                    <p>光顾路5号国际会展中心</p>
+                    <p>光顾路5号国际会展中心</p>
+                    <p>光顾路5号国际会展中心</p>
+                    <p>光顾路5号国际会展中心</p>
+                  </td>
+                </tr>
+              </table>
             </div>
-          </div>
-          <div class="grade-cont">
-            <ul class="grade-cont-list">
-              <li class="grade-cont-li" v-for="(gradeItem, index) in gradeTxt" :key="index">
-                <div class="grade-cont-user">
-                  <span></span>
-                  <span>用户名{{index}}</span>
+            <div class="basic">
+              <h5><span>项目介绍</span><i></i></h5>
+            </div>
+            <div class="introduce">
+              <h5>英文站入口</h5>
+              <p>英文站购买链接：<a href="www.baidu.com">www.baidu.com</a></p>
+              <h5>演出介绍</h5>
+              <p>
+                世艇典原茧窖乐剧衝<br/>
+                猫的足迹<br/>
+                超过20#语言_ 30个国家，300座城市，7300万观众超过20沖语言，30个国家，300座域市■ 7300万观众星过20种语言■ 3阶国冡，300座 城市，7300万观众星过20种语言，30^国冡，300座域市，7300万观众超过20#^言，30个国家，300座城市，7300万观众超过20?1晤言， 国家■ 300座域市■ 7300万观众超过20#^言，30个国家，300座城市，7300万观众 網7座托尼奖，莫获翻弗奖、格菜美奖等全球主要奖项<br/>
+                伦麵区百老汇有史贼狐连续公演最久的音乐剧之一
+              </p>
+              <img src="../../assets/img/detailsPic1.jpg" alt="图片">
+              <p>
+                伦麵区百老汇有史贼狐连续公演最久的音乐剧之一<br/>
+                伦麵区百老汇有史贼狐连续公演最久的音乐剧之一<br/>
+                伦麵区百老汇有史贼狐连续公演最久的音乐剧之一<br/>
+              </p>
+            </div>
+            <div class="basic">
+              <h5><span>写剧评&nbsp;&nbsp;&nbsp;&nbsp;</span><i></i></h5>
+            </div>
+            <div class="grade">
+              <div class="grade-wind">
+                <div class="star">
+                  打个分吧：<el-rate text-color="#ff3c1b" :colors="['#ff3c1b', '#ff3c1b', '#ff3c1b']" void-color="#999999" @change="getGrade" v-model="value3" :disabled="false" show-score allow-half></el-rate>
                 </div>
-                <div class="grade-cont-txt">
-                  <p>{{gradeItem.Texts}}</p>
-                  <div>
-                    <el-rate :value="gradeItem.Num" :colors="['#ff3c1b', '#ff3c1b', '#ff3c1b']" disabled-void-color="#999999" text-color="#ff9900" allow-half disabled></el-rate>
-                    <span>2019-01-02 19:01:23</span>
+                <textarea ref="TextwindOne" maxlength="10000" placeholder="写个评价吧，10-10000字"></textarea>
+                <el-button class="grade-btn" :plain="true" @click="Grade">评价</el-button>
+              </div>
+            </div>
+          </div>
+        </transition>
+        <transition name="el-fade-in">
+          <div v-show="msgTab === 1" class="message-cont showMsg">
+            <div class="basic">
+              <h5><span>写剧评&nbsp;&nbsp;&nbsp;&nbsp;</span><i></i></h5>
+            </div>
+            <div class="grade">
+              <div class="grade-wind">
+                <div class="star">
+                  打个分吧：<el-rate text-color="#ff3c1b" :colors="['#ff3c1b', '#ff3c1b', '#ff3c1b']" void-color="#999999" @change="getGrade" v-model="value3" :disabled="false" show-score allow-half></el-rate>
+                </div>
+                <textarea ref="Textwind" maxlength="10000" placeholder="写个评价吧，10-10000字"></textarea>
+                <el-button class="grade-btn" :plain="true" @click="Grade">评价</el-button>
+              </div>
+            </div>
+            <div class="grade-cont">
+              <ul class="grade-cont-list">
+                <li class="grade-cont-li" v-for="(gradeItem, index) in gradeTxt" :key="index">
+                  <div class="grade-cont-user">
+                    <span></span>
+                    <span>用户名{{index}}</span>
                   </div>
+                  <div class="grade-cont-txt">
+                    <p>{{gradeItem.Texts}}</p>
+                    <div>
+                      <el-rate :value="gradeItem.Num" :colors="['#ff3c1b', '#ff3c1b', '#ff3c1b']" disabled-void-color="#999999" text-color="#ff9900" allow-half disabled></el-rate>
+                      <span>2019-01-02 19:01:23</span>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </transition>
+        <transition name="el-fade-in">
+          <div v-show="msgTab === 2" class="message-cont explain">
+            <div class="basic">
+              <h5><span>特别提示</span><i></i></h5>
+            </div>
+            <div class="explain-hint">
+              <span>售前提示</span>
+              <p>1.为避免快递配送不能及时选古，演出距开场时间少子3天时不提供【快递配送】服务，谪您谅P !您可以饱S电子票成，<a href="#">点击查看上门取票地址>></a><br/>
+                2.凡演出M商品，开票时间1为演出前Z3U四周，正式开累后会第一时间短信通知您，澉主^收。<br/>
+                3.的票品购买，麟票品隨脈目劫方及场馆偷兄而定，IE5C开麦网槪腿用户</p>
+              <span>支付方式</span>
+              <p>为避免快递配送不能及时选古，演出距开场时间少子3天时不提供【快递配送】服务</p>
+              <span>退/换货说明</span>
+              <p>的票品购买，麟票品隨脈目劫方及场馆偷兄而定，IE5C开麦网槪腿用户</p>
+            </div>
+            <div class="basic">
+              <h5><span>移动购票</span><i></i></h5>
+            </div>
+            <div class="phone">
+              <p>
+                1.为避免快递配送不能及时选古，演出距开场时间少子3天时不提供。<br/>
+                2.凡演出M商品，开票时间1为演出前Z3U四周，正式开累后会第一时间短信通知您，澉主^收。<br/>
+              </p>
+              <div class="explain-cellIcon">
+                <img src="../../assets/img/iphone.png" alt="">
+                <img src="../../assets/img/android.png" alt="">
+                <img src="../../assets/img/ipad.png" alt="">
+              </div>
+            </div>
+            <div class="basic">
+              <h5><span>网上订购</span><i></i></h5>
+            </div>
+            <div class="explain-flow">
+              <p>
+                1.为避免快递配送不能及时选古，演出距开场时间少子3天时不提供。<br/>
+                2.凡演出M商品，开票时间1为演出前Z3U四周，正式开累后会第一时间短信通知您，澉主^收。<br/>
+              </p>
+              <div class="flow">
+                <div class="flow-poto">
+                  <span><strong>选择商品</strong><i></i></span>
+                  <p>
+                    <span>选择商品</span>
+                  </p>
                 </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div v-show="msgTab === 2" class="message-cont explain">
-          <div class="basic">
-            <h5><span>特别提示</span><i></i></h5>
-          </div>
-          <div class="explain-hint">
-            <span>售前提示</span>
-            <p>1.为避免快递配送不能及时选古，演出距开场时间少子3天时不提供【快递配送】服务，谪您谅P !您可以饱S电子票成，<a href="#">点击查看上门取票地址>></a><br/>
-               2.凡演出M商品，开票时间1为演出前Z3U四周，正式开累后会第一时间短信通知您，澉主^收。<br/>
-               3.的票品购买，麟票品隨脈目劫方及场馆偷兄而定，IE5C开麦网槪腿用户</p>
-            <span>支付方式</span>
-            <p>为避免快递配送不能及时选古，演出距开场时间少子3天时不提供【快递配送】服务</p>
-            <span>退/换货说明</span>
-            <p>的票品购买，麟票品隨脈目劫方及场馆偷兄而定，IE5C开麦网槪腿用户</p>
-          </div>
-          <div class="basic">
-            <h5><span>移动购票</span><i></i></h5>
-          </div>
-          <div class="phone">
-            <p>
-              1.为避免快递配送不能及时选古，演出距开场时间少子3天时不提供。<br/>
-              2.凡演出M商品，开票时间1为演出前Z3U四周，正式开累后会第一时间短信通知您，澉主^收。<br/>
-            </p>
-            <div class="explain-cellIcon">
-              <img src="../../assets/img/iphone.png" alt="">
-              <img src="../../assets/img/android.png" alt="">
-              <img src="../../assets/img/ipad.png" alt="">
+                <div class="flow-poto">
+                  <span><strong>确认订单信息</strong><i></i></span>
+                  <p>
+                    <span>下订单</span>
+                  </p>
+                </div>
+                <div class="flow-poto">
+                  <span><strong>选择支付方式</strong><i></i></span>
+                  <p>
+                    <span>完成支付</span>
+                  </p>
+                </div>
+                <div class="flow-poto">
+                  <span><strong>追踪商品</strong><i></i></span>
+                </div>
+              </div>
+              <div class="basic">
+                <h5><span>在线支付</span><i></i></h5>
+              </div>
+              <p class="buy-txt">支持多家网上银行、平台（支付宝、银联、微信支付等）在线支付，<a href="#">查看详情>></a></p>
+              <div class="buy-pay">
+                支付方式：
+                <i>
+                  <img src="../../assets/img/zfb.png" alt="">
+                  <img src="../../assets/img/wx.png" alt="">
+                </i>
+              </div>
+              <div class="basic">
+                <h5><span>柜台付款</span><i></i></h5>
+              </div>
+              <p class="buy-txt">您也可以选择最近的柜台网点，到柜台付款购买，<a href="#">查看附近分公司上门地址>></a></p>
+              <div class="basic">
+                <h5><span>电子钱包</span><i></i></h5>
+              </div>
+              <p class="buy-txt">您也可以选择最近的柜台网点，到柜台付款购买，<a href="#">查看解决方案>></a></p>
             </div>
           </div>
-          <div class="basic">
-            <h5><span>网上订购</span><i></i></h5>
-          </div>
-          <div class="explain-flow">
-            <p>
-              1.为避免快递配送不能及时选古，演出距开场时间少子3天时不提供。<br/>
-              2.凡演出M商品，开票时间1为演出前Z3U四周，正式开累后会第一时间短信通知您，澉主^收。<br/>
-            </p>
-            <div class="flow">
-              <div class="flow-poto">
-                <span><strong>选择商品</strong><i></i></span>
-                <p>
-                  <span>选择商品</span>
-                </p>
-              </div>
-              <div class="flow-poto">
-                <span><strong>确认订单信息</strong><i></i></span>
-                <p>
-                  <span>下订单</span>
-                </p>
-              </div>
-              <div class="flow-poto">
-                <span><strong>选择支付方式</strong><i></i></span>
-                <p>
-                  <span>完成支付</span>
-                </p>
-              </div>
-              <div class="flow-poto">
-                <span><strong>追踪商品</strong><i></i></span>
-              </div>
-            </div>
+        </transition>
+        <transition name="el-fade-in">
+          <div v-show="msgTab === 3" class="message-cont buy">
             <div class="basic">
               <h5><span>在线支付</span><i></i></h5>
             </div>
@@ -249,28 +283,7 @@
             </div>
             <p class="buy-txt">您也可以选择最近的柜台网点，到柜台付款购买，<a href="#">查看解决方案>></a></p>
           </div>
-        </div>
-        <div v-show="msgTab === 3" class="message-cont buy">
-          <div class="basic">
-            <h5><span>在线支付</span><i></i></h5>
-          </div>
-          <p class="buy-txt">支持多家网上银行、平台（支付宝、银联、微信支付等）在线支付，<a href="#">查看详情>></a></p>
-          <div class="buy-pay">
-            支付方式：
-            <i>
-              <img src="../../assets/img/zfb.png" alt="">
-              <img src="../../assets/img/wx.png" alt="">
-            </i>
-          </div>
-          <div class="basic">
-            <h5><span>柜台付款</span><i></i></h5>
-          </div>
-          <p class="buy-txt">您也可以选择最近的柜台网点，到柜台付款购买，<a href="#">查看附近分公司上门地址>></a></p>
-          <div class="basic">
-            <h5><span>电子钱包</span><i></i></h5>
-          </div>
-          <p class="buy-txt">您也可以选择最近的柜台网点，到柜台付款购买，<a href="#">查看解决方案>></a></p>
-        </div>
+        </transition>
       </div>
       <div class="message-right-warp">
         <div class="recommend message-right-cont">
@@ -301,12 +314,15 @@
 import Headers from '../common/Header'
 import Footer from '../common/Footer'
 import Search from '../shenyintao/Search'
+import Top from '../common/ReturnTop'
+import 'element-ui/lib/theme-chalk/base.css'
 export default {
   name: 'detail',
   components: {
     Headers,
     Search,
-    Footer
+    Footer,
+    Top
   },
   data () {
     return {
@@ -428,14 +444,10 @@ export default {
     color: #dddfe6;
     margin: 0 auto;
     overflow: hidden;
-    a{
-      font-size: 12px;
-      padding: 0 9px;
-      color: #495060;
-      display: inline-block;
-    }
-    a:nth-of-type(3){
-      color: #ff3c1b;
+    /deep/.el-breadcrumb{
+      .el-breadcrumb__inner{
+        font-weight: normal;
+      }
     }
   }
   .tickets{

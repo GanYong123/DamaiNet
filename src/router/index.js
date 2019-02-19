@@ -14,6 +14,8 @@ import Person from '@/components/wangchuang/Person'
 import Inform from '@/components/wangchuang/Inform'
 import Psona from '@/components/wangchuang/Psona'
 import Order from '@/components/shikangkang/Order'
+import Payment from '@/components/shikangkang/Payment'
+import WechatPayment from '@/components/shikangkang/WechatPayment'
 Vue.use(Router)
 
 export default new Router({
@@ -92,6 +94,16 @@ export default new Router({
       path: '/choose-seat',
       name: 'Order',
       component: Order
+    },
+    {
+      path: '/payment',
+      name: 'Payment',
+      component: Payment
+    },
+    {
+      path: '/wechat',
+      name: 'Wechat-payment',
+      component: WechatPayment
     }
   ]
 })

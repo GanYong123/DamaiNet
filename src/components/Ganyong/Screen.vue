@@ -5,30 +5,14 @@
     <div class="title-num">共&nbsp;<span>{{listquantity}}</span>&nbsp;个商品</div>
     <div class="seactionCont">
       <div class="cont-left">
-        <div class="subnav">
-          <div class="citylist">
+        <ul class="subnav">
+          <li v-for="(cityItem, i) in condition" :key="i" class="citylist">
             <div class="list-warp">
-              <span>城市:</span>
+              <span>{{cityItem.title}}:</span>
               <ul>
-                <li @click="citytab(index)" v-for="(cityItem, index) in city" :key="index" :class="{active:index === cityPosition}">{{cityItem}}</li>
-              </ul>
-            </div>
-          </div>
-          <div class="citylist">
-            <div class="list-warp">
-              <span>分类:</span>
-              <ul>
-                <li @click="classifytab(index)" v-for="(classifyItem, index) in classify" :key="index" :class="{active:index === classifyPosition}">{{classifyItem}}</li>
-              </ul>
-            </div>
-          </div>
-          <div class="citylist">
-            <div class="list-warp">
-              <span>时间:</span>
-              <ul>
-                <li @click="timetab(index)" v-for="(timeItem, index) in time" :key="index" :class="{active:index === timePosition}">{{timeItem}}</li>
-                <li>
-                  <div class="block">
+                <li v-for="(Item, j) in cityItem.list" :key="j" @click="citytab(i, j)" :class="{'active': cityItem.index === j}">
+                  {{Item}}
+                  <div v-show="Item===''" class="block">
                     <el-date-picker
                       v-model="value13"
                       type="daterange"
@@ -40,8 +24,8 @@
                 </li>
               </ul>
             </div>
-          </div>
-        </div>
+          </li>
+        </ul>
         <div class="listCont">
           <div class="listBtn">
             <ul>
@@ -121,19 +105,31 @@
 import Headers from '../common/Header'
 import Footer from '../common/Footer'
 import Search from '../shenyintao/Search'
+var condition = [
+  {
+    title: '城市',
+    list: ['全部', '北京', '上海', '深圳', '杭州', '广州', '成都', '西安']
+  },
+  {
+    title: '分类',
+    list: ['全部', '音乐会', '朗诵', '曲苑杂坛', '独奏', '管弦乐', '声乐']
+  },
+  {
+    title: '时间',
+    list: ['全部', '今天', '明天', '']
+  }
+]
+condition.forEach((item) => {
+  item.index = 0
+})
 export default {
   name: 'screen',
   data () {
     return {
-      cityPosition: 0, // 城市分类选项的切换下标
-      classifyPosition: 0, // 音乐分类选项的切换下标
-      timePosition: 0, // 时间分类选项的切换下标
       listMenu: 0, // 推荐分类选项的切换下标
       arrange: 0, // 布局切换下标
       paging: 0, // 分页器下标
-      city: ['全部', '北京', '上海', '深圳', '杭州', '广州', '成都', '西安'],
-      classify: ['全部', '音乐会', '朗诵', '曲苑杂坛', '独奏', '管弦乐', '声乐'],
-      time: ['全部', '今天', '明天'],
+      condition,
       value13: [], // 日期选中组件的存放容器
       quantity: 6, // 分页器组件的每页显示数量
       listquantity: 0,
@@ -146,15 +142,10 @@ export default {
     Search
   },
   methods: {
-    citytab (index) {
-      this.cityPosition = index
-    },
-    classifytab (index) {
-      this.classifyPosition = index
-    },
-    timetab (index) {
-      this.timePosition = index
-      if (index === 1) { // 点击今天时才执行该方法
+    citytab (i, j) {
+      this.condition[i].index = j
+      this.getListData()
+      if (this.condition[i].list[j] === '今天') {
         this.today()
       }
     },
