@@ -23,23 +23,21 @@
           <!--登录-->
           <div class="sign">
             <div class="top">
-              <el-tabs v-model="activeName2" type="card" @tab-click="handleClick">
+              <el-tabs v-model="activeName2" type="card">
                 <el-tab-pane label="账户登录" name="first">
                   <div class="poae">
-                    <form class="form" action="">
+                    <form class="form" action="/">
                       <div class="tel">
                         <div class="pic-log">
-                          <i>图</i>
+                          <i class="iconfont icon-user"></i>
                         </div>
-                        <input id="name" type="text" placeholder="请输入手机号码"/>
-                        <!--<span id="labe" style="display: none;">输入错误，请输入11位手机号</span>-->
+                        <input v-model="user" id="name" type="text" placeholder="请输入手机号码"/>
                       </div>
                       <div class="pass">
                         <div class="pic-log">
-                          <i>片</i>
+                          <i class="iconfont icon-mima"></i>
                         </div>
-                        <input type="password" placeholder="请输入登录密码"/>
-                        <!--<span id="pass" style="display: none;">输入错误，请输入6-12位</span>-->
+                        <input v-model="password" type="password" placeholder="请输入登录密码"/>
                       </div>
                       <div class="sig-login">
                         <button type="submit" class="pass-login" @click="passlog">登录</button>
@@ -50,11 +48,11 @@
                           <span>下次登录</span>
                         </div>
                         <div class="bot-right">
-                          <p>忘记密码？<a href="#">立即注册</a></p>
+                          <p>忘记密码？<router-link to="/register">立即注册</router-link></p>
                         </div>
                       </div>
                       <div class="posl">
-                        <p>其他登录:<i>图</i></p>
+                        <p>其他登录:<i class="iconfont icon-weixin"></i></p>
                       </div>
                     </form>
                   </div>
@@ -76,20 +74,28 @@ export default {
   name: 'Login',
   data () {
     return {
-      activeName2: 'first'
+      activeName2: 'first',
+      password: '',
+      user: ''
     }
   },
   components: {
     Lower
   },
   methods: {
-    handleClick (tab, event) {
-      console.log(tab, event)
-    },
-    laol () {
-    },
     passlog () {
-      // alert(111)
+      var that = this
+      if (that.user === 'admin') {
+        alert('admin')
+        if (that.password === '123456') {
+          alert('123456')
+        } else {
+          alert('输入错误')
+        }
+        return false
+      } else {
+        alert('输入错误')
+      }
     }
   }
 }
@@ -186,7 +192,7 @@ export default {
   margin-left:25px;
   margin-top: 20px;
   border-radius: 4px;
-  height: 35px;
+  height: 36px;
   width: 401px;
 }
 .auto .nav .sign .poae .pass input{
@@ -195,6 +201,7 @@ export default {
 .auto .nav .sign .poae .tel .pic-log{
   height: 36px;
   width: 26px;
+  text-align: center;
   border-right: 1px solid red;
   display: inline-block;
   position: relative;
@@ -205,6 +212,7 @@ export default {
 .auto .nav .sign .poae .pass .pic-log{
   height: 36px;
   width: 26px;
+  text-align: center;
   border-right: 1px solid red;
   display: inline-block;
   position: relative;

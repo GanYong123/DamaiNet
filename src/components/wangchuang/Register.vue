@@ -17,26 +17,26 @@
         <div class="nav">
           <div class="honp">
             <div class="pic-log">
-              <i>好</i>
+              <i class="iconfont icon-user"></i>
             </div>
             <input type="text" placeholder="请输入手机号"/>
           </div>
           <div class="honp-pass">
             <div class="pic-list">
-              <i>好</i>
+              <i class="iconfont icon-mima"></i>
             </div>
             <input type="password" placeholder="请输入登录密码"/>
           </div>
           <div class="honp-loat">
             <div class="pic-lblp">
-            <i>卧</i>
+            <i class="iconfont icon-mima"></i>
             </div>
             <input type="password" placeholder="请确定登录密码"/>
           </div>
           <div class="cofie">
             <div class="verif">
             <div class="ver-pic">
-              <i>验</i>
+              <i class="iconfont icon-xinxi"></i>
             </div>
             <input type="tel" placeholder="请输入验证码"/>
           </div>
@@ -177,17 +177,19 @@ export default {
     /*background: #ccc;*/
     display: inline-block;
     position: relative;
+    text-align: center;
   }
   .auto .box .nav .honp-loat .pic-lblp{
     height: 36px;
     width: 26px;
     display: inline-block;
     position: relative;
+    text-align: center;
   }
   .auto .box .nav .verif .ver-pic{
     height: 30px;
     width: 26px;
-    /*background: #ccc;*/
+    text-align: center;
     display: inline-block;
     position: relative;
   }
@@ -198,7 +200,7 @@ export default {
   .auto .box .nav .honp .pic-log{
     height: 36px;
     width: 26px;
-    /*background: #ccc;*/
+    text-align: center;
     display: inline-block;
     position: relative;
   }
