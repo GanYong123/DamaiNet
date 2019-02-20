@@ -13,9 +13,9 @@ import Register from '@/components/wangchuang/Register'
 import Person from '@/components/wangchuang/Person'
 import Inform from '@/components/wangchuang/Inform'
 import Psona from '@/components/wangchuang/Psona'
-import Order from '@/components/shikangkang/Order'
-import Payment from '@/components/shikangkang/Payment'
-import WechatPayment from '@/components/shikangkang/WechatPayment'
+import DetailsOrderSure from '../components/shikangkang/DetailsOrderSure'
+import OrderPayQRpay from '../components/shikangkang/OrderPayQRpay'
+import OrderSureOrderPay from '../components/shikangkang/OrderSureOrderPay'
 Vue.use(Router)
 
 export default new Router({
@@ -92,18 +92,15 @@ export default new Router({
     },
     {
       path: '/choose-seat',
-      name: 'Order',
-      component: Order
+      component: DetailsOrderSure
     },
     {
       path: '/payment',
-      name: 'Payment',
-      component: Payment
+      component: OrderSureOrderPay
     },
     {
       path: '/wechat',
-      name: 'Wechat-payment',
-      component: WechatPayment
+      component: OrderPayQRpay
     }
   ]
 })

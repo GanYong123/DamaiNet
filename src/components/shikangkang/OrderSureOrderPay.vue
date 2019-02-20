@@ -9,16 +9,10 @@
         </div>
         <table>
           <tr>
-            <th>订单编号</th>
-            <th>商品名称</th>
-            <th>订单金额</th>
-            <th>应付金额</th>
+            <th v-for="(item, index) in ordertitle" :key="index">{{item}}</th>
           </tr>
           <tr>
-            <td>430000201004178510</td>
-            <td>始亲观性指购音运世团</td>
-            <td>84.71</td>
-            <td>84.71</td>
+            <th v-for="(val, i) in ordercont" :key="i">{{val}}</th>
           </tr>
         </table>
         <div id="account">
@@ -55,20 +49,37 @@ export default {
   data () {
     return {
       obj: ['1选择商品', '2确认商品信息', '3支付订单', '4收取商品'],
-      off: false,
+      ordertitle: ['订单编号', '商品名称', '订单金额', '应付金额'],
+      ordercont: ['430000201004178510', '始亲观性指购音.运世团', '84.71', '84.71'],
+      off: true,
       real: false
     }
   },
+  // 路由跳转前把订单信息和支付方式存入本地
+  beforeRouteLeave (to, from, next) {
+    var ordermsg = {'val1': this.ordercont[0], 'val2': this.ordercont[1], 'val3': this.ordercont[2]}
+    localStorage.setItem('ordemsg', JSON.stringify(ordermsg))
+    if (this.off) {
+      localStorage.setItem('payway', 'weixin')
+    } else {
+      localStorage.setItem('payway', 'zhifubao')
+    }
+    next()
+  },
   methods: {
     changestate: function () {
-      this.off = !this.off
       if (this.off) {
+        this.off = true
+      } else {
+        this.off = true
         this.real = false
       }
     },
     changestates: function () {
-      this.real = !this.real
       if (this.real) {
+        this.real = true
+      } else {
+        this.real = true
         this.off = false
       }
     }
@@ -208,6 +219,7 @@ export default {
       font-size: 12px;
       line-height: 32px;
       color: #fff;
+      margin-bottom: 30px;
     }
   }
 }

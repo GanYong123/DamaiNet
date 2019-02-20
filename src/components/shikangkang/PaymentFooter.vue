@@ -39,6 +39,9 @@ export default {
         float: left;
         border-right: 1px solid #1b1b1b;
         text-indent: 28px;
+        &:hover{
+          color: blue;
+        }
       }
     }
     p{
